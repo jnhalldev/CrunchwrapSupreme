@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">CrunchwrapSupreme</string>
+    <string name="help">HELP</string>
+    <string name="work">WORK</string>
+    <string name="services">SERVICES</string>
+    <string name="messages">MESSAGES</string>
+    <string name="contact_us">CONTACT US</string>
+    <string name="profile">PROFILE</string>
+    <string name="settings">SETTINGS</string>
+    <string name="jobz">JOBZ</string>
 </resources>
