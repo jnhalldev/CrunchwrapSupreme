@@ -6,13 +6,117 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/HELP"
+        android:layout_width="133dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="37dp"
+        android:fontFamily="@font/VertigoFLF"
+        android:text="@string/help"
+        android:textAllCaps="false"
+        android:textColor="#FFA617"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintBaseline_toBaselineOf="@+id/WORK"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/WORK"
+        android:layout_width="123dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="157dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginBottom="159dp"
+        android:fontFamily="@font/VertigoFLF"
+        android:text="@string/work"
+        android:textColor="#FFA617"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/MESSAGES"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/SERVICES"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_marginStart="37dp"
+        android:layout_marginBottom="300dp"
+        android:fontFamily="@font/VertigoFLF"
+        android:text="@string/services"
+        android:textColor="#FFA617"
+        android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/MESSAGES"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="35dp"
+        android:fontFamily="@font/VertigoFLF"
+        android:text="@string/messages"
+        android:textColor="#FFA617"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/SERVICES"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/CONTACT_US"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="66dp"
+        android:fontFamily="@font/VertigoFLF"
+        android:text="@string/contact_us"
+        android:textColor="#FFA617"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/SETTINGS"
+        app:layout_constraintStart_toEndOf="@+id/PROFILE" />
+
+    <Button
+        android:id="@+id/PROFILE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/VertigoFLF"
+        android:text="@string/profile"
+        android:textColor="#FFA617"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/SETTINGS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/VertigoFLF"
+        android:text="@string/settings"
+        android:textColor="#FFA617"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="210dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="86dp"
+        android:fontFamily="@font/HardSports"
+        android:text="@string/jobz"
+        android:textColor="#FFA617"
+        android:textSize="75sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
