@@ -7,25 +7,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Help_Page extends AppCompatActivity {
+public class Work_Page extends AppCompatActivity {
 
-    Button homeButton;
+    Button homeButton2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_help_page);
+        setContentView(R.layout.activity_work_page);
 
-        homeButton = findViewById(R.id.homeButton);
+        homeButton2 = findViewById(R.id.homeButton2);
 
-        homeButton.setOnClickListener(new View.OnClickListener() {
+        homeButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Help_Page.this, MainActivity.class);
+                Intent intent = new Intent(Work_Page.this, MainActivity.class);
                 startActivity(intent);
             }
         });
-
 
     }
 }
