@@ -39,11 +39,11 @@ public class MainActivity extends AppCompatActivity {
             userSignedIn.setText("User Is signed out.");
         }
 
-        Button buttonSignOut = findViewById(R.id.buttonHomePageSignOut);
-        buttonSignOut.setOnClickListener(new View.OnClickListener() {
+        Button buttonProfile = findViewById(R.id.buttonHomePageEditProfile);
+        buttonProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signUserOut();
+                showProfileActivity();
             }
         });
     }
@@ -54,10 +54,10 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    private void signUserOut() {
-        FirebaseAuth.getInstance().signOut();
+    private void showProfileActivity() {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
         finish();
-        startActivity(getIntent());
     }
 
     private boolean checkIfSignedIn() {
