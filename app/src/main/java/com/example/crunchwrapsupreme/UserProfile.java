@@ -8,13 +8,18 @@ public class UserProfile {
     private String emailAddress;
     private String phone;
     private String password;
+    private String profilePicture;
 
+    UserProfile() {
+
+    }
     UserProfile(String fN, String lN, String e, String pN, String p) {
         firstName = fN;
         lastName = lN;
         emailAddress = e;
         phone = pN;
         password = p;
+        profilePicture = "";
     }
 
     public void setFirstName(String s) {
@@ -55,5 +60,13 @@ public class UserProfile {
 
     public void setPassword(String p) {
         password = p;
+    }
+
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
     }
 }
