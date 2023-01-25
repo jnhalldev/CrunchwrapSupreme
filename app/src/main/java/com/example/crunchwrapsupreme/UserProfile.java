@@ -1,6 +1,7 @@
 package com.example.crunchwrapsupreme;
 
 
+import java.util.List;
 
 public class UserProfile {
     private String firstName;
@@ -9,6 +10,8 @@ public class UserProfile {
     private String phone;
     private String password;
     private String profilePicture;
+    private Resume resume;
+    private String bio;
 
     UserProfile() {
 
@@ -20,6 +23,7 @@ public class UserProfile {
         phone = pN;
         password = p;
         profilePicture = "";
+        bio = "";
     }
 
     public void setFirstName(String s) {
@@ -68,5 +72,21 @@ public class UserProfile {
 
     public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
+    }
+
+    public Resume getResume() {
+        return resume;
+    }
+
+    public void setResume(Resume resume) {
+        this.resume = resume;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public String getBio() {
+        return bio;
     }
 }

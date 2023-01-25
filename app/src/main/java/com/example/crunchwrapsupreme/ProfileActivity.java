@@ -5,11 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -19,7 +16,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,12 +38,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.UUID;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -56,6 +46,7 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView userName;
     private TextView userEmail;
     private TextView userPhone;
+    private TextView userBio;
 
     private Uri imagePath;
 
@@ -63,7 +54,7 @@ public class ProfileActivity extends AppCompatActivity {
     private FirebaseUser currentUser;
     private StorageReference storageRef;
 
-    private UserProfile user;
+    public static UserProfile currentUserProfile;
 
 
     @Override
@@ -75,6 +66,7 @@ public class ProfileActivity extends AppCompatActivity {
         userName = findViewById(R.id.textViewProfileUserName);
         userEmail = findViewById(R.id.textViewProfileUserEmail);
         userPhone = findViewById(R.id.textViewProfileUserPhone);
+        userBio = findViewById(R.id.textViewProfileBio);
 
         userImage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -96,13 +88,21 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         Button btnLogout = findViewById(R.id.buttonProfileLogout);
-        btnLogout.setOnClickListener((new View.OnClickListener() {
+        btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 signUserOut();
                 showMainActivity();
             }
-        }));
+        });
+
+        Button btnEditBio = findViewById(R.id.buttonProfileEditBio);
+        btnEditBio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showEditBioActivity();
+            }
+        });
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -110,13 +110,14 @@ public class ProfileActivity extends AppCompatActivity {
         reference.addValueEventListener((new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                user = snapshot.getValue(UserProfile.class);
-                    userName.setText(user.getFirstName() + " " + user.getLastName());
-                    userPhone.setText(user.getPhone());
-                    userEmail.setText(user.getEmail());
-                    if (!user.getProfilePicture().toString().matches("")) {
+                currentUserProfile = snapshot.getValue(UserProfile.class);
+                    userName.setText(currentUserProfile.getFirstName() + " " + currentUserProfile.getLastName());
+                    userPhone.setText(currentUserProfile.getPhone());
+                    userEmail.setText(currentUserProfile.getEmail());
+                    userBio.setText(currentUserProfile.getBio());
+                    if (!currentUserProfile.getProfilePicture().toString().matches("")) {
                         try {
-                            Picasso.get().load(user.getProfilePicture().toString()).into(userImage);
+                            Picasso.get().load(currentUserProfile.getProfilePicture().toString()).into(userImage);
                         }catch (Exception e) {
 
                         }
@@ -133,6 +134,12 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void showMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void showEditBioActivity() {
+        Intent intent = new Intent(this, EditBioActivity.class);
         startActivity(intent);
         finish();
     }
@@ -185,8 +192,6 @@ public class ProfileActivity extends AppCompatActivity {
                             }
                         });
                        Toast.makeText(ProfileActivity.this, "Profile picture updated.", Toast.LENGTH_SHORT).show();
-                       //user.setProfilePicture(task.getResult().getStorage().getDownloadUrl().toString());
-                       //FirebaseDatabase.getInstance().getReference("Profiles").child(currentUser.getUid()).setValue(user);;
                     }
                     else {
                         Toast.makeText(ProfileActivity.this, "Unable to upload picture.", Toast.LENGTH_SHORT).show();
@@ -203,9 +208,9 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void updateProfilePicture(String url) {
-        user.setProfilePicture(url);
+        currentUserProfile.setProfilePicture(url);
         FirebaseDatabase.getInstance().getReference("Profiles")
-                .child(currentUser.getUid()).setValue(user);
+                .child(currentUser.getUid()).setValue(currentUserProfile);
     }
 
 
