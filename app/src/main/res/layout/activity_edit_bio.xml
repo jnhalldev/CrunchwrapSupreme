@@ -51,7 +51,7 @@
             android:layout_height="match_parent"
             android:textSize="24dp"
             android:text=""
-            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890(){}[]/\<>!.?,:;-\n "/>
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890(){}[]/\!.?,:;-\n "/>
 
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
