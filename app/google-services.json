@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "326744400092",
+    "project_id": "crunchwrapsupreme-ef147",
+    "storage_bucket": "crunchwrapsupreme-ef147.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:326744400092:android:ab80190b3c812ddc739419",
+        "android_client_info": {
+          "package_name": "com.example.crunchwrapsupreme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "326744400092-ksg2dvpenmk4lskq95qte0jnjg0ujnj0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgJ1eGHDfxc_4AZGoE-MVaFVqjzRRZ49o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "326744400092-ksg2dvpenmk4lskq95qte0jnjg0ujnj0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
