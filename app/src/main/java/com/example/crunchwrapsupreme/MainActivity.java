@@ -44,19 +44,13 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        TextView userSignedIn = findViewById(R.id.textViewUserSignedIn);
-        if (checkIfSignedIn()) {
-            userSignedIn.setText("User Is signed in.");
-        }
-        else {
-            userSignedIn.setText("User Is signed out.");
-        }
-
-        Button buttonProfile = findViewById(R.id.buttonHomePageEditProfile);
+        Button buttonProfile = findViewById(R.id.profileButton);
         buttonProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showProfileActivity();
+            }
+        });
 
         helpButton = findViewById(R.id.helpButton);
         workButton = findViewById(R.id.workButton);

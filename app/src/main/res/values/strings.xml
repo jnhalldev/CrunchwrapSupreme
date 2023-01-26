@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">CrunchwrapSupreme</string>
+    <string name="create_account">Create Account</string>
+    <string name="sign_in">Sign In</string>
+    <string name="create_profile">Create Profile</string>
+    <string name="title_activity_sign_in">SignInActivity</string>
     <string name="help">HELP</string>
     <string name="work">WORK</string>
     <string name="services">SERVICES</string>
@@ -8,4 +12,9 @@
     <string name="profile">PROFILE</string>
     <string name="settings">SETTINGS</string>
     <string name="jobz">JOBZ</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
 </resources>
