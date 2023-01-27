@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -60,6 +61,6 @@ public class EditBioActivity extends AppCompatActivity {
         currentUserProfile.setBio(string);
         FirebaseDatabase.getInstance().getReference("Profiles")
                 .child(currentUser.getUid()).setValue(currentUserProfile);
-
+        Toast.makeText(EditBioActivity.this, "Bio saved successfully.", Toast.LENGTH_SHORT).show();
     }
 }

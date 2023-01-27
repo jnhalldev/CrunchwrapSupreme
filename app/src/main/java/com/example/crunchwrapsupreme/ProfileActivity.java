@@ -130,6 +130,8 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         }));
+
+
     }
 
     private void showMainActivity() {
