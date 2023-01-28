@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/textViewWorkHistoryOrg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Organization: "
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:textStyle="bold"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/textViewOrgNameFromUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/textViewWorkHistoryOrg"
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:text=""
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/textViewWorkHistoryOrgURL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textViewWorkHistoryOrg"
+                    android:text="URL: "
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:textStyle="bold"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/textViewOrgURLFromUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/textViewWorkHistoryOrgURL"
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:layout_below="@+id/textViewWorkHistoryOrg"
+                    android:text=""
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/textViewWorkHistoryLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textViewWorkHistoryOrgURL"
+                    android:text="Location: "
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:textStyle="bold"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/textViewOrgLocationCity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/textViewWorkHistoryLocation"
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:layout_below="@+id/textViewWorkHistoryOrgURL"
+                    android:text=""
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/textViewOrgLocationStateFromUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/textViewOrgLocationCity"
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:layout_below="@+id/textViewWorkHistoryOrgURL"
+                    android:text=""
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/textViewWorkHistoryPosition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textViewWorkHistoryLocation"
+                    android:text="Position: "
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:textStyle="bold"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/textViewOrgPositionFromUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/textViewWorkHistoryPosition"
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:layout_below="@+id/textViewWorkHistoryLocation"
+                    android:text=""
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/textViewWorkHistoryBeginDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textViewWorkHistoryPosition"
+                    android:text="Begin: "
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:textStyle="bold"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/textViewOrgLocationBeginDateFromUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/textViewWorkHistoryBeginDate"
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:layout_below="@+id/textViewWorkHistoryPosition"
+                    android:text=""
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/textViewWorkHistoryendDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textViewWorkHistoryBeginDate"
+                    android:text="End: "
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:textStyle="bold"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/textViewOrgLocationEndDateFromUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/textViewWorkHistoryBeginDate"
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:layout_below="@+id/textViewOrgLocationBeginDateFromUser"
+                    android:text=""
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <Button
+                    android:id="@+id/buttonDeleteWorkHistory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="Delete"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+
+            </RelativeLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

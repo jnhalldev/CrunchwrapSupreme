@@ -10,7 +10,6 @@ public class WorkExperience {
     private String positionTitle;
     private Calendar beginDate;
     private Calendar endDate;
-    private String[] skillsUtilized;
     boolean isEmployerVerified;
 
     WorkExperience(String orgName,String orgURL, String city, String state, String position, Calendar begin, Calendar end, String[] skills) {
@@ -21,7 +20,6 @@ public class WorkExperience {
         positionTitle = position;
         beginDate = begin;
         endDate = end;
-        skillsUtilized = skills;
     }
 
     public String getOrganizationName() {
@@ -78,14 +76,6 @@ public class WorkExperience {
 
     public void setEndDate(Calendar endDate) {
         this.endDate = endDate;
-    }
-
-    public String[] getSkillsUtilized() {
-        return skillsUtilized;
-    }
-
-    public void setSkillsUtilized(String[] skillsUtilized) {
-        this.skillsUtilized = skillsUtilized;
     }
 
     public boolean isEmployerVerified() {

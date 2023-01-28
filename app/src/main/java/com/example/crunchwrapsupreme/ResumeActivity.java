@@ -1,5 +1,7 @@
 package com.example.crunchwrapsupreme;
 
+import static com.example.crunchwrapsupreme.ProfileActivity.currentUserProfile;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 
 public class ResumeActivity extends AppCompatActivity {
+
+    private Resume currentResume = currentUserProfile.getResume();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
