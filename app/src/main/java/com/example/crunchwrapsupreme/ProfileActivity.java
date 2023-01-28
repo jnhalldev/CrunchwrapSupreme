@@ -96,6 +96,14 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        Button btnResume = findViewById(R.id.buttonProfileViewResume);
+        btnResume.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showResumeActivity();
+            }
+        });
+
         Button btnEditBio = findViewById(R.id.buttonProfileEditBio);
         btnEditBio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,8 +138,6 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         }));
-
-
     }
 
     private void showMainActivity() {
@@ -140,14 +146,20 @@ public class ProfileActivity extends AppCompatActivity {
         finish();
     }
 
-    private void showEditBioActivity() {
-        Intent intent = new Intent(this, EditBioActivity.class);
+    private void signUserOut() {
+        FirebaseAuth.getInstance().signOut();
+        finish();
+    }
+
+    private void showResumeActivity() {
+        Intent intent = new Intent(this, ResumeActivity.class);
         startActivity(intent);
         finish();
     }
 
-    private void signUserOut() {
-        FirebaseAuth.getInstance().signOut();
+    private void showEditBioActivity() {
+        Intent intent = new Intent(this, EditBioActivity.class);
+        startActivity(intent);
         finish();
     }
 

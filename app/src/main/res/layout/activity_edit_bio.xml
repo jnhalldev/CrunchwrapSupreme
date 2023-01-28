@@ -12,6 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:text="Back"
+        android:fontFamily="@font/vertigoflfbold"
+        android:textStyle="bold"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,6 +25,8 @@
         android:layout_marginTop="32dp"
         android:text="Edit Bio"
         android:textSize="34sp"
+        android:fontFamily="@font/vertigoflfbold"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -50,7 +55,9 @@
             android:layout_height="match_parent"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890(){}[]/\!.?,:;-\n "
             android:text=""
-            android:textSize="24dp" />
+            android:textSize="24dp"
+            android:fontFamily="@font/vertigoflfbold"
+            android:textStyle="bold" />
 
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
