@@ -125,7 +125,8 @@ public class ProfileActivity extends AppCompatActivity {
                     userBio.setText(currentUserProfile.getBio());
                     if (!currentUserProfile.getProfilePicture().toString().matches("")) {
                         try {
-                            Picasso.get().load(currentUserProfile.getProfilePicture().toString()).into(userImage);
+                            //Picasso.get().load(currentUserProfile.getProfilePicture().toString()).into(userImage);
+                            loadImageWithResize();
                         }catch (Exception e) {
 
                         }
@@ -138,6 +139,14 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         }));
+    }
+
+    private void loadImageWithResize() {
+        Picasso
+                .get()
+                .load(currentUserProfile.getProfilePicture().toString())
+                .resize(userImage.getWidth(), userImage.getHeight()) // resizes the image to these dimensions (in pixel). does not respect aspect ratio
+                .into(userImage);
     }
 
     private void showMainActivity() {
