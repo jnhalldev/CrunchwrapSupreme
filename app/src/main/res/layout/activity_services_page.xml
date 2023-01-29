@@ -4,10 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Work_Page">
+    tools:context=".Services_Page">
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="187dp"
+        android:layout_height="100dp"
+        android:fontFamily="monospace"
+        android:text="Services"
+        android:textAlignment="center"
+        android:textColor="#FFA617"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/homeButton2"
+        android:id="@+id/homeButton3"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="3dp"
@@ -17,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/imageView11"
         android:layout_width="45dp"
         android:layout_height="35dp"
         android:layout_marginStart="3dp"
@@ -25,18 +39,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/home" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="187dp"
-        android:layout_height="100dp"
-        android:fontFamily="monospace"
-        android:text="Work"
-        android:textAlignment="center"
-        android:textColor="#FFA617"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
