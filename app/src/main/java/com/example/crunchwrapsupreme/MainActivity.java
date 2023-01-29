@@ -138,8 +138,6 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-}
-
     private boolean checkIfSignedIn() {
         boolean signedIn = false;
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
