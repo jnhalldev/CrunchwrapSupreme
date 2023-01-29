@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/editTextUserInputInstitution"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Institution"
+            android:fontFamily="@font/vertigoflfbold"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/editTextUserInputLevelOfEducation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextUserInputInstitution"
+            android:hint="Level of education"
+            android:fontFamily="@font/vertigoflfbold"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/editTextUserInputGraduationYear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextUserInputLevelOfEducation"
+            android:inputType="date"
+            android:hint="Grad Year"
+            android:fontFamily="@font/vertigoflfbold"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/editTextUserInputInstitutionCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextUserInputGraduationYear"
+            android:hint="City"
+            android:fontFamily="@font/vertigoflfbold"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/editTextUserInputInstitutionState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextUserInputInstitutionCity"
+            android:fontFamily="@font/vertigoflfbold"
+            android:hint="State"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+</RelativeLayout>
