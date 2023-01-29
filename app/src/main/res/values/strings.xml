@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CrunchwrapSupreme</string>
+    <string name="back"><![CDATA[<]]></string>
+    <string name="job_search">Job Search</string>
+    <string name="backhomepage"><![CDATA[<]]></string>
+    <string name="search">Job Search</string>
 </resources>
