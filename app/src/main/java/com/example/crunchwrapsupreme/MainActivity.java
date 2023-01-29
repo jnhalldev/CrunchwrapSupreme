@@ -17,7 +17,6 @@ import org.w3c.dom.Text;
 
 import java.util.regex.*;
 
-
 public class MainActivity extends AppCompatActivity {
 
     Button helpButton;
@@ -72,8 +71,7 @@ public class MainActivity extends AppCompatActivity {
         workButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Work_Page.class);
-                startActivity(intent);
+                ShowWorkSearchActivity();
 
             }
         });
@@ -133,6 +131,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+    
+    public void ShowWorkSearchActivity() {
+        Intent intent = new Intent(this, WorkSearchActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+}
 
     private boolean checkIfSignedIn() {
         boolean signedIn = false;
@@ -143,4 +149,5 @@ public class MainActivity extends AppCompatActivity {
         return signedIn;
     }
 }
+
 

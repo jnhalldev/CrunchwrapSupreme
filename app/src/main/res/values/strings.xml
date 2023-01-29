@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">CrunchwrapSupreme</string>
+    <string name="back"><![CDATA[<]]></string>
+    <string name="job_search">Job Search</string>
+    <string name="backhomepage"><![CDATA[<]]></string>
+    <string name="search">Job Search</string>
     <string name="create_account">Create Account</string>
     <string name="sign_in">Sign In</string>
     <string name="create_profile">Create Profile</string>
