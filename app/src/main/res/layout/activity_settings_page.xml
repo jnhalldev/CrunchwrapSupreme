@@ -4,24 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Help_Page">
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="45dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="3dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/home" />
+    tools:context=".Settings_Page">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView4"
         android:layout_width="187dp"
         android:layout_height="100dp"
         android:fontFamily="monospace"
-        android:text="Help"
+        android:text="Settings"
         android:textAlignment="center"
         android:textColor="#FFA617"
         android:textSize="34sp"
@@ -31,12 +21,37 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/homeButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:id="@+id/homeButton4"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginStart="3dp"
         android:layout_marginTop="3dp"
         android:background="@android:color/transparent"
+        android:contentDescription="Home"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="3dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/home" />
+
+    <Switch
+        android:id="@+id/DarkModeSwitch"
+        android:layout_width="188dp"
+        android:layout_height="135dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="100dp"
+        android:fontFamily="monospace"
+        android:text="Dark Mode"
+        android:textColor="#FFA617"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
