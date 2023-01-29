@@ -67,7 +67,7 @@
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890(){}[]/\!.?,:;-\n "
             android:fontFamily="@font/vertigoflfbold"
             android:text=""
-            android:textSize="24dp"
+            android:textSize="32dp"
             android:textStyle="bold" />
 
     </ScrollView>
