@@ -13,7 +13,7 @@ public class Education {
 
     }
 
-    public Education(String institution, String earned, String city, String state, String gradYear) {
+    public Education(String institution, String earned, String gradYear, String city, String state) {
         this.institution = institution;
         this.earned = earned;
         this.city = city;
