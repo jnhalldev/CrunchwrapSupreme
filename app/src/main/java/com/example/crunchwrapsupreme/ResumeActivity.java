@@ -38,6 +38,7 @@ public class ResumeActivity extends AppCompatActivity {
         layout = findViewById(R.id.container);
 
         buildDialog();
+        toggleEdit();
         generateWorkExperienceCards();
 
         btnAddToResume.setOnClickListener(new View.OnClickListener() {
@@ -196,5 +197,13 @@ public class ResumeActivity extends AppCompatActivity {
         }
 
         layout.addView(view);
+    }
+
+    private boolean checkIfUsersProfile() {
+        boolean isUser = true;
+        //
+        // Once able to find other profiles, will implement check of current user profile against profile being displayed
+        //
+        return isUser;
     }
 }
