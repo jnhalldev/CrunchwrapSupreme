@@ -226,7 +226,7 @@ public class ResumeActivity extends AppCompatActivity {
 
             instNameView.setText(education.getInstitution());
             instEducationLevelView.setText(education.getEarned());
-            instGradYearView.setText((education.getCity()));
+            instGradYearView.setText((education.getGradYear()));
             instStateView.setText(education.getState());
             instCityView.setText(education.getCity()+", ");
 
