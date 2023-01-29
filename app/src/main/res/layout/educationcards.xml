@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/textViewEducationInstitution"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Institution: "
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/textViewInstitutionFromUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/textViewEducationInstitution"
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/textViewEducationLevelEarned"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textViewEducationInstitution"
+                    android:text="Education Level: "
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/textViewEducationLevelEarnedFromUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/textViewEducationLevelEarned"
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:layout_below="@+id/textViewEducationInstitution"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/textViewEducationYearGraduated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textViewEducationLevelEarned"
+                    android:text="Graduated: "
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/textViewEducationYearGraduatedFromUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/textViewEducationYearGraduated"
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:layout_below="@+id/textViewEducationLevelEarned"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/textViewEducationLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:layout_below="@+id/textViewEducationYearGraduated"
+                    android:text="Location: "
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/textViewEducationCityFromUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/textViewEducationLocation"
+                    android:layout_below="@+id/textViewEducationYearGraduated"
+                    android:text=""
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/textViewEducationStateFromUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/textViewEducationCityFromUser"
+                    android:layout_below="@+id/textViewEducationYearGraduated"
+                    android:text=""
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+
+                <Button
+                    android:id="@+id/buttonDeleteEducation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="Delete"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+
+            </RelativeLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </RelativeLayout>
+</RelativeLayout>

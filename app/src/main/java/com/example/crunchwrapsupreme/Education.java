@@ -7,9 +7,13 @@ public class Education {
     private String earned;
     private String city;
     private String state;
-    private Calendar gradYear;
+    private String gradYear;
 
-    public Education(String institution, String earned, String city, String state, Calendar gradYear) {
+    public Education() {
+
+    }
+
+    public Education(String institution, String earned, String city, String state, String gradYear) {
         this.institution = institution;
         this.earned = earned;
         this.city = city;
@@ -49,11 +53,11 @@ public class Education {
         this.state = state;
     }
 
-    public Calendar getGradYear() {
+    public String getGradYear() {
         return gradYear;
     }
 
-    public void setGradYear(Calendar gradYear) {
+    public void setGradYear(String gradYear) {
         this.gradYear = gradYear;
     }
 }

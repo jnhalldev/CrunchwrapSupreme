@@ -93,6 +93,18 @@ public class UserProfile {
         this.resume.removeWorkExperience(workExperience);
     }
 
+    public void addToEducation(Education education) {
+        this.resume.addEducation(education);
+    }
+
+    public Education getEducationFromIndex(int index) {
+        return this.resume.getEducationAtIndex(index);
+    }
+
+    public void removeEducation(Education education) {
+        this.resume.removeEducation(education);
+    }
+
     public void setBio(String bio) {
         this.bio = bio;
     }

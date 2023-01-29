@@ -3,10 +3,12 @@ package com.example.crunchwrapsupreme;
 import static com.example.crunchwrapsupreme.ProfileActivity.currentUserProfile;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,8 +27,10 @@ public class ResumeActivity extends AppCompatActivity {
 
     private boolean editEngaged = false;
 
-    private Button btnAddToResume;
-    private AlertDialog dialog;
+    private Button btnAddToExperience;
+    private Button btnAddToEducation;
+    private AlertDialog dialogWorkHistory;
+    private AlertDialog dialogEducation;
     private LinearLayout layout;
 
     @Override
@@ -34,23 +38,28 @@ public class ResumeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resume);
 
-        btnAddToResume = findViewById(R.id.buttonAddToResume);
-        layout = findViewById(R.id.container);
+        btnAddToExperience = findViewById(R.id.buttonAddToExperience);
+        btnAddToEducation = findViewById(R.id.buttonAddToEducation);
+        layout = findViewById(R.id.containerWorkHistory);
 
-        buildDialog();
+        buildWorkHistoryDialog();
+        buildEducationDialog();
         toggleEdit();
-        generateWorkExperienceCards();
+        generateCards();
 
-        btnAddToResume.setOnClickListener(new View.OnClickListener() {
+        btnAddToExperience.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog.show();
+                dialogWorkHistory.show();
             }
         });
 
-        if (editEngaged) {
-
-        }
+        btnAddToEducation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogEducation.show();
+            }
+        });
 
         Button btnBack = findViewById(R.id.buttonResumeBack);
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +85,7 @@ public class ResumeActivity extends AppCompatActivity {
         }
     }
 
-    private void buildDialog() {
+    private void buildWorkHistoryDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View view = getLayoutInflater().inflate(R.layout.dialogaddworkexperience, null);
 
@@ -96,11 +105,10 @@ public class ResumeActivity extends AppCompatActivity {
                         WorkExperience tempWorkExperience = new WorkExperience(organizationNameInput.getText().toString(), organizationURLInput.getText().toString(), organizationCityInput.getText().toString(), organizationStateInput.getText().toString(),
                                 organizationPositionInput.getText().toString(), organizationBeginDateInput.getText().toString(), organizationEndDateInput.getText().toString());
                         currentUserProfile.addToResume(tempWorkExperience);
-                        addCard(organizationNameInput.getText().toString(), organizationURLInput.getText().toString(), organizationCityInput.getText().toString(), organizationStateInput.getText().toString(),
-                                organizationPositionInput.getText().toString(), organizationBeginDateInput.getText().toString(), organizationEndDateInput.getText().toString(), tempWorkExperience);
                         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
                         FirebaseDatabase.getInstance().getReference("Profiles")
                                 .child(currentUser.getUid()).setValue(currentUserProfile);
+                        generateCards();
                         Toast.makeText(ResumeActivity.this, "Work history added.", Toast.LENGTH_SHORT).show();
                     }
                 })
@@ -110,11 +118,52 @@ public class ResumeActivity extends AppCompatActivity {
 
                     }
                 });
-        dialog = builder.create();
+        dialogWorkHistory = builder.create();
     }
 
-    private void generateWorkExperienceCards() {
-        //layout.removeViewsInLayout(0,layout.getChildCount());
+    private void buildEducationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View view = getLayoutInflater().inflate(R.layout.dialogaddeducation, null);
+
+        EditText institutionNameInput = view.findViewById(R.id.editTextUserInputInstitution);
+        EditText institutionLevelOfEducationInput = view.findViewById(R.id.editTextUserInputLevelOfEducation);
+        EditText institutionGradYearInput = view.findViewById(R.id.editTextUserInputGraduationYear);
+        EditText institutionCityInput = view.findViewById(R.id.editTextUserInputInstitutionCity);
+        EditText institutionStateInput = view.findViewById(R.id.editTextUserInputInstitutionState);
+
+        builder.setView(view);
+        builder.setTitle("Add Education")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Education tempEducation = new Education(institutionNameInput.getText().toString(), institutionLevelOfEducationInput.getText().toString(), institutionGradYearInput.getText().toString(),
+                                institutionCityInput.getText().toString(), institutionStateInput.getText().toString());
+                        currentUserProfile.addToEducation(tempEducation);
+                        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                        FirebaseDatabase.getInstance().getReference("Profiles")
+                                .child(currentUser.getUid()).setValue(currentUserProfile);
+                        generateCards();
+                        Toast.makeText(ResumeActivity.this, "Education added.", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+        dialogEducation = builder.create();
+    }
+
+    private void generateCards() {
+        layout.removeViewsInLayout(0,layout.getChildCount());
+        Typeface typeface = ResourcesCompat.getFont(this,R.font.vertigoflf);
+
+        TextView textViewWorkExperience = new TextView(this);
+        textViewWorkExperience.setText("Work Experience:");
+        textViewWorkExperience.setTextSize(25);
+        textViewWorkExperience.setTypeface(typeface);
+        layout.addView(textViewWorkExperience);
         List<WorkExperience> currentWorkExperienceList = currentUserProfile.getResume().getExperienceList();
         for (WorkExperience workExperience : currentWorkExperienceList) {
             View view = getLayoutInflater().inflate(R.layout.workcards, null);
@@ -126,7 +175,7 @@ public class ResumeActivity extends AppCompatActivity {
             TextView orgPositionView = view.findViewById(R.id.textViewOrgPositionFromUser);
             TextView orgStartDateView = view.findViewById(R.id.textViewOrgLocationBeginDateFromUser);
             TextView orgEndDateView = view.findViewById(R.id.textViewOrgLocationEndDateFromUser);
-            Button btnDelete = view.findViewById(R.id.buttonDeleteWorkHistory);
+            Button btnDeleteWorkExperience = view.findViewById(R.id.buttonDeleteWorkHistory);
 
             orgNameView.setText(workExperience.getOrganizationName());
             orgURLView.setText(workExperience.getOrganizationURL());
@@ -137,7 +186,7 @@ public class ResumeActivity extends AppCompatActivity {
             orgEndDateView.setText(workExperience.getEndDate());
 
             if (editEngaged) {
-                btnDelete.setOnClickListener(new View.OnClickListener() {
+                btnDeleteWorkExperience.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         currentUserProfile.removeWorkExperience(workExperience);
@@ -150,53 +199,73 @@ public class ResumeActivity extends AppCompatActivity {
                 });
             }
             else {
-                btnDelete.setEnabled(false);
-                btnDelete.setVisibility(View.INVISIBLE);
+                btnDeleteWorkExperience.setEnabled(false);
+                btnDeleteWorkExperience.setVisibility(View.INVISIBLE);
             }
 
             layout.addView(view);
         }
-    }
 
-    private void addCard(String orgName, String orgURL, String city, String state, String position, String startDate, String endDate,WorkExperience tempWorkExperience) {
-        View view = getLayoutInflater().inflate(R.layout.workcards, null);
+        TextView textViewEducation = new TextView(this);
+        textViewEducation.setText("Education:");
+        textViewEducation.setTextSize(25);
+        textViewEducation.setTypeface(typeface);
+        layout.addView(textViewEducation);
 
-        TextView orgNameView = view.findViewById(R.id.textViewOrgNameFromUser);
-        TextView orgURLView = view.findViewById(R.id.textViewOrgURLFromUser);
-        TextView orgCityView = view.findViewById(R.id.textViewOrgLocationCityFromUser);
-        TextView orgStateView = view.findViewById(R.id.textViewOrgLocationStateFromUser);
-        TextView orgPositionView = view.findViewById(R.id.textViewOrgPositionFromUser);
-        TextView orgStartDateView = view.findViewById(R.id.textViewOrgLocationBeginDateFromUser);
-        TextView orgEndDateView = view.findViewById(R.id.textViewOrgLocationEndDateFromUser);
-        Button btnDelete = view.findViewById(R.id.buttonDeleteWorkHistory);
+        List<Education> currentEducationList = currentUserProfile.getResume().getEducationList();
+        for (Education education : currentEducationList) {
+            View view = getLayoutInflater().inflate(R.layout.educationcards, null);
 
-        orgNameView.setText(orgName);
-        orgURLView.setText(orgURL);
-        orgCityView.setText(city+", ");
-        orgStateView.setText(state);
-        orgPositionView.setText(position);
-        orgStartDateView.setText(startDate);
-        orgEndDateView.setText(endDate);
+            TextView instNameView = view.findViewById(R.id.textViewInstitutionFromUser);
+            TextView instEducationLevelView = view.findViewById(R.id.textViewEducationLevelEarnedFromUser);
+            TextView instGradYearView = view.findViewById(R.id.textViewEducationYearGraduatedFromUser);
+            TextView instCityView = view.findViewById(R.id.textViewEducationCityFromUser);
+            TextView instStateView = view.findViewById(R.id.textViewEducationStateFromUser);
 
-        if (editEngaged) {
-            btnDelete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    currentUserProfile.removeWorkExperience(tempWorkExperience);
-                    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-                    FirebaseDatabase.getInstance().getReference("Profiles")
-                            .child(currentUser.getUid()).setValue(currentUserProfile);
-                    Toast.makeText(ResumeActivity.this, "Work history removed.", Toast.LENGTH_SHORT).show();
-                    layout.removeView(view);
-                }
-            });
+            Button btnDeleteEducation = view.findViewById(R.id.buttonDeleteEducation);
+
+            instNameView.setText(education.getInstitution());
+            instEducationLevelView.setText(education.getEarned());
+            instGradYearView.setText((education.getCity()));
+            instStateView.setText(education.getState());
+            instCityView.setText(education.getCity()+", ");
+
+            if (editEngaged) {
+                btnDeleteEducation.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        currentUserProfile.removeEducation(education);
+                        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                        FirebaseDatabase.getInstance().getReference("Profiles")
+                                .child(currentUser.getUid()).setValue(currentUserProfile);
+                        Toast.makeText(ResumeActivity.this, "Work history removed.", Toast.LENGTH_SHORT).show();
+                        layout.removeView(view);
+                    }
+                });
+            }
+            else {
+                btnDeleteEducation.setEnabled(false);
+                btnDeleteEducation.setVisibility(View.INVISIBLE);
+            }
+            layout.addView(view);
         }
-        else {
-            btnDelete.setEnabled(false);
-            btnDelete.setVisibility(View.INVISIBLE);
-        }
 
-        layout.addView(view);
+
+
+        TextView textViewSkills = new TextView(this);
+        textViewSkills.setText("Skills:");
+        textViewSkills.setTextSize(25);
+        textViewSkills.setTypeface(typeface);
+        layout.addView(textViewSkills);
+
+        // add in skill cards
+
+
+        TextView textViewReferences = new TextView(this);
+        textViewReferences.setText("References:");
+        textViewReferences.setTextSize(25);
+        textViewReferences.setTypeface(typeface);
+        layout.addView(textViewReferences);
     }
 
     private boolean checkIfUsersProfile() {

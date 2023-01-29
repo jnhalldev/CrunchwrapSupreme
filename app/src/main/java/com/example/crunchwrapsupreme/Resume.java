@@ -35,4 +35,20 @@ public class Resume {
     public void addEducation(Education education) {
         this.educationList.add((education));
     }
+
+    public Education getEducationAtIndex(int index) {
+        return educationList.get(index);
+    }
+
+    public void removeEducationAtIndex(int index) {
+        this.educationList.remove(index);
+    }
+
+    public void removeEducation(Education education) {
+        this.educationList.remove(education);
+    }
+
+    public List<Education> getEducationList() {
+        return educationList;
+    }
 }
