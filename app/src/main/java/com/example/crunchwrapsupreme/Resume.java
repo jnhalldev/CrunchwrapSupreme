@@ -1,5 +1,6 @@
 package com.example.crunchwrapsupreme;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Resume {
@@ -7,7 +8,8 @@ public class Resume {
     private List<Education> educationList;
 
     Resume() {
-
+        experienceList = new ArrayList<WorkExperience>();
+        educationList = new ArrayList<Education>();
     }
 
     public void addWorkExperience(WorkExperience experience) {

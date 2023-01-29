@@ -10,11 +10,10 @@ public class UserProfile {
     private String phone;
     private String password;
     private String profilePicture;
-    private Resume resume;
+    private Resume resume = new Resume();
     private String bio;
 
     UserProfile() {
-
     }
     UserProfile(String fN, String lN, String e, String pN, String p) {
         firstName = fN;
@@ -80,6 +79,18 @@ public class UserProfile {
 
     public void setResume(Resume resume) {
         this.resume = resume;
+    }
+
+    public void addToResume(WorkExperience workExperience) {
+        this.resume.addWorkExperience(workExperience);
+    }
+
+    public WorkExperience getWorkExperienceFromIndex(int index) {
+        return this.resume.getWorkExperienceAtIndex(index);
+    }
+
+    public void removeWorkExperience(WorkExperience workExperience) {
+        this.resume.removeWorkExperience(workExperience);
     }
 
     public void setBio(String bio) {

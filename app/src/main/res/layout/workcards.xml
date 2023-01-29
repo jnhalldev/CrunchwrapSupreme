@@ -28,7 +28,7 @@
                     android:text="Organization: "
                     android:fontFamily="@font/vertigoflfbold"
                     android:textStyle="bold"
-                    android:textSize="18sp"/>
+                    android:textSize="20sp"/>
 
                 <TextView
                     android:id="@+id/textViewOrgNameFromUser"
@@ -37,7 +37,7 @@
                     android:layout_toEndOf="@+id/textViewWorkHistoryOrg"
                     android:fontFamily="@font/vertigoflfbold"
                     android:text=""
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"/>
                 <TextView
                     android:id="@+id/textViewWorkHistoryOrgURL"
@@ -47,7 +47,7 @@
                     android:text="URL: "
                     android:fontFamily="@font/vertigoflfbold"
                     android:textStyle="bold"
-                    android:textSize="18sp"/>
+                    android:textSize="20sp"/>
 
                 <TextView
                     android:id="@+id/textViewOrgURLFromUser"
@@ -57,7 +57,7 @@
                     android:fontFamily="@font/vertigoflfbold"
                     android:layout_below="@+id/textViewWorkHistoryOrg"
                     android:text=""
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -68,28 +68,28 @@
                     android:text="Location: "
                     android:fontFamily="@font/vertigoflfbold"
                     android:textStyle="bold"
-                    android:textSize="18sp"/>
+                    android:textSize="20sp"/>
 
                 <TextView
-                    android:id="@+id/textViewOrgLocationCity"
+                    android:id="@+id/textViewOrgLocationCityFromUser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@+id/textViewWorkHistoryLocation"
                     android:fontFamily="@font/vertigoflfbold"
                     android:layout_below="@+id/textViewWorkHistoryOrgURL"
                     android:text=""
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/textViewOrgLocationStateFromUser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/textViewOrgLocationCity"
+                    android:layout_toEndOf="@+id/textViewOrgLocationCityFromUser"
                     android:fontFamily="@font/vertigoflfbold"
                     android:layout_below="@+id/textViewWorkHistoryOrgURL"
                     android:text=""
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -100,7 +100,7 @@
                     android:text="Position: "
                     android:fontFamily="@font/vertigoflfbold"
                     android:textStyle="bold"
-                    android:textSize="18sp"/>
+                    android:textSize="20sp"/>
 
                 <TextView
                     android:id="@+id/textViewOrgPositionFromUser"
@@ -110,7 +110,7 @@
                     android:fontFamily="@font/vertigoflfbold"
                     android:layout_below="@+id/textViewWorkHistoryLocation"
                     android:text=""
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -121,7 +121,7 @@
                     android:text="Begin: "
                     android:fontFamily="@font/vertigoflfbold"
                     android:textStyle="bold"
-                    android:textSize="18sp"/>
+                    android:textSize="20sp"/>
 
                 <TextView
                     android:id="@+id/textViewOrgLocationBeginDateFromUser"
@@ -131,7 +131,7 @@
                     android:fontFamily="@font/vertigoflfbold"
                     android:layout_below="@+id/textViewWorkHistoryPosition"
                     android:text=""
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -142,7 +142,7 @@
                     android:text="End: "
                     android:fontFamily="@font/vertigoflfbold"
                     android:textStyle="bold"
-                    android:textSize="18sp"/>
+                    android:textSize="20sp"/>
 
                 <TextView
                     android:id="@+id/textViewOrgLocationEndDateFromUser"
@@ -152,7 +152,7 @@
                     android:fontFamily="@font/vertigoflfbold"
                     android:layout_below="@+id/textViewOrgLocationBeginDateFromUser"
                     android:text=""
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"/>
 
                 <Button
@@ -163,7 +163,7 @@
                     android:text="Delete"
                     android:layout_centerVertical="true"
                     android:fontFamily="@font/vertigoflfbold"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"/>
 
 

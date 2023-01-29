@@ -8,11 +8,14 @@ public class WorkExperience {
     private String city;
     private String state;
     private String positionTitle;
-    private Calendar beginDate;
-    private Calendar endDate;
+    private String beginDate;
+    private String endDate;
     boolean isEmployerVerified;
 
-    WorkExperience(String orgName,String orgURL, String city, String state, String position, Calendar begin, Calendar end, String[] skills) {
+    WorkExperience() {
+
+    }
+    WorkExperience(String orgName, String orgURL, String city, String state, String position, String begin, String end) {
         organizationName = orgName;
         organizationURL = orgURL;
         this.city = city;
@@ -62,19 +65,19 @@ public class WorkExperience {
         this.positionTitle = positionTitle;
     }
 
-    public Calendar getBeginDate() {
+    public String getBeginDate() {
         return beginDate;
     }
 
-    public void setBeginDate(Calendar beginDate) {
+    public void setBeginDate(String beginDate) {
         this.beginDate = beginDate;
     }
 
-    public Calendar getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Calendar endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 

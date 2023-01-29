@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/editTextUserInputOrganization"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Organization"
+            android:fontFamily="@font/vertigoflfbold"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/editTextUserInputOrganizationURL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextUserInputOrganization"
+            android:hint="URL"
+            android:fontFamily="@font/vertigoflfbold"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/editTextUserInputOrganizationCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextUserInputOrganizationURL"
+            android:hint="City"
+            android:fontFamily="@font/vertigoflfbold"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/editTextUserInputOrganizationState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextUserInputOrganizationCity"
+            android:hint="State"
+            android:fontFamily="@font/vertigoflfbold"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/editTextUserInputOrganizationTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextUserInputOrganizationState"
+            android:fontFamily="@font/vertigoflfbold"
+            android:hint="Title"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextUserInputOrganizationBeginDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextUserInputOrganizationTitle"
+            android:ems="7"
+            android:fontFamily="@font/vertigoflfbold"
+            android:hint="Start Date"
+            android:inputType="date"
+            android:textSize="20sp"
+            android:textStyle="bold" /> />
+
+        <EditText
+            android:id="@+id/editTextUserInputOrganizationEndDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextUserInputOrganizationBeginDate"
+            android:ems="7"
+            android:fontFamily="@font/vertigoflfbold"
+            android:hint="End Date"
+            android:inputType="date"
+            android:textSize="20sp"
+            android:textStyle="bold" /> />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
