@@ -1,8 +1,6 @@
 package com.example.crunchwrapsupreme;
 
 
-import java.util.List;
-
 public class UserProfile {
     private String firstName;
     private String lastName;
@@ -111,5 +109,21 @@ public class UserProfile {
 
     public String getBio() {
         return bio;
+    }
+
+    public void addToSkills(Skill skill) {
+        resume.addSkillToList(skill);
+    }
+
+    public void removeSkill(Skill skill) {
+        resume.removeSkill(skill);
+    }
+
+    public void addToReferences(Reference reference) {
+        this.resume.addReferenceToList(reference);
+    }
+
+    public void removeReference(Reference reference) {
+        this.resume.removeReferenceFromList(reference);
     }
 }

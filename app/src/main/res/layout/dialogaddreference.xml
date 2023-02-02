@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/editTextUserInputReferenceName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:fontFamily="@font/vertigoflfbold"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/editTextUserInputReferenceRelationship"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextUserInputReferenceName"
+            android:hint="Relationship"
+            android:fontFamily="@font/vertigoflfbold"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/editTextUserInputReferencePhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextUserInputReferenceRelationship"
+            android:hint="Phone"
+            android:fontFamily="@font/vertigoflfbold"
+            android:ems="10"
+            android:inputType="phone"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+=
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

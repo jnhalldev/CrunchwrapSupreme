@@ -21,7 +21,7 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp">
                 <TextView
-                    android:id="@+id/textViewInstitutionFromUser"
+                    android:id="@+id/textViewSkillFromUser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/vertigoflfbold"
@@ -31,7 +31,7 @@
                     android:textStyle="bold"/>
 
                 <Button
-                    android:id="@+id/buttonDeleteEducation"
+                    android:id="@+id/buttonDeleteSkill"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
