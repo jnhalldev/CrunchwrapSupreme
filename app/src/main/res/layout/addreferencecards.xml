@@ -22,100 +22,68 @@
                 android:padding="10dp">
 
                 <TextView
-                    android:id="@+id/textViewEducationInstitution"
+                    android:id="@+id/textViewReferenceName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Institution: "
+                    android:text="Name "
                     android:fontFamily="@font/vertigoflfbold"
                     android:textStyle="bold"
                     android:textSize="20sp"/>
 
                 <TextView
-                    android:id="@+id/textViewInstitutionFromUser"
+                    android:id="@+id/textViewReferenceNameFromUser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/textViewEducationInstitution"
+                    android:layout_toEndOf="@+id/textViewReferenceName"
                     android:fontFamily="@font/vertigoflfbold"
                     android:text=""
                     android:textSize="20sp"
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/textViewEducationLevelEarned"
+                    android:id="@+id/textViewReferenceRelationship"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/textViewEducationInstitution"
-                    android:text="Education Level: "
+                    android:layout_below="@+id/textViewReferenceName"
+                    android:text="Relationship: "
                     android:fontFamily="@font/vertigoflfbold"
                     android:textStyle="bold"
                     android:textSize="20sp"/>
 
                 <TextView
-                    android:id="@+id/textViewEducationLevelEarnedFromUser"
+                    android:id="@+id/textViewReferenceRelationshipFromUser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/textViewEducationLevelEarned"
+                    android:layout_toEndOf="@+id/textViewReferenceRelationship"
                     android:fontFamily="@font/vertigoflfbold"
-                    android:layout_below="@+id/textViewEducationInstitution"
+                    android:layout_below="@+id/textViewReferenceName"
                     android:text=""
                     android:textSize="20sp"
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/textViewEducationYearGraduated"
+                    android:id="@+id/textViewReferencePhone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/textViewEducationLevelEarned"
-                    android:text="Graduated: "
+                    android:layout_below="@+id/textViewReferenceRelationship"
+                    android:text="Phone: "
                     android:fontFamily="@font/vertigoflfbold"
                     android:textStyle="bold"
                     android:textSize="20sp"/>
 
                 <TextView
-                    android:id="@+id/textViewEducationYearGraduatedFromUser"
+                    android:id="@+id/textViewReferencePhoneUserInput"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/textViewEducationYearGraduated"
+                    android:layout_toEndOf="@+id/textViewReferencePhone"
                     android:fontFamily="@font/vertigoflfbold"
-                    android:layout_below="@+id/textViewEducationLevelEarned"
+                    android:layout_below="@+id/textViewReferenceRelationship"
                     android:text=""
                     android:textSize="20sp"
                     android:textStyle="bold"/>
-
-                <TextView
-                    android:id="@+id/textViewEducationLocation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/vertigoflfbold"
-                    android:layout_below="@+id/textViewEducationYearGraduated"
-                    android:text="Location: "
-                    android:textSize="20sp"
-                    android:textStyle="bold"/>
-
-                <TextView
-                    android:id="@+id/textViewEducationCityFromUser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/textViewEducationLocation"
-                    android:layout_below="@+id/textViewEducationYearGraduated"
-                    android:text=""
-                    android:fontFamily="@font/vertigoflfbold"
-                    android:textStyle="bold"
-                    android:textSize="20sp"/>
-
-                <TextView
-                    android:id="@+id/textViewEducationStateFromUser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/textViewEducationCityFromUser"
-                    android:layout_below="@+id/textViewEducationYearGraduated"
-                    android:text=""
-                    android:fontFamily="@font/vertigoflfbold"
-                    android:textStyle="bold"
-                    android:textSize="20sp"/>
 
                 <Button
-                    android:id="@+id/buttonDeleteEducation"
+                    android:id="@+id/buttonDeleteReference"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"

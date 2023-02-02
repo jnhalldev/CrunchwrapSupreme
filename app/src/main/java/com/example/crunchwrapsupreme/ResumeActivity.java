@@ -8,11 +8,14 @@ import androidx.core.content.res.ResourcesCompat;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,16 +24,21 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.sql.Ref;
 import java.util.List;
 
 public class ResumeActivity extends AppCompatActivity {
 
-    private boolean editEngaged = false;
+    private boolean editEngaged = true;
 
-    private Button btnAddToExperience;
-    private Button btnAddToEducation;
+    private ImageButton btnAddToExperience;
+    private ImageButton btnAddToEducation;
+    private ImageButton btnAddToSkills;
+    private ImageButton btnAddToReference;
     private AlertDialog dialogWorkHistory;
     private AlertDialog dialogEducation;
+    private AlertDialog dialogSkill;
+    private AlertDialog dialogReference;
     private LinearLayout layout;
 
     @Override
@@ -38,14 +46,16 @@ public class ResumeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resume);
 
-        btnAddToExperience = findViewById(R.id.buttonAddToExperience);
-        btnAddToEducation = findViewById(R.id.buttonAddToEducation);
+        //btnAddToExperience = findViewById(R.id.buttonAddToExperience);
+        //btnAddToEducation = findViewById(R.id.buttonAddToEducation);
         layout = findViewById(R.id.containerWorkHistory);
+        generateCards();
 
         buildWorkHistoryDialog();
         buildEducationDialog();
-        toggleEdit();
-        generateCards();
+        buildSkillDialog();
+        buildReferenceDialog();
+        //toggleEdit();
 
         btnAddToExperience.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +68,20 @@ public class ResumeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialogEducation.show();
+            }
+        });
+
+        btnAddToSkills.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogSkill.show();
+            }
+        });
+
+        btnAddToReference.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogReference.show();
             }
         });
 
@@ -76,14 +100,14 @@ public class ResumeActivity extends AppCompatActivity {
         finish();
     }
 
-    private void toggleEdit() {
-        if (editEngaged) {
-            editEngaged = false;
-        }
-        else {
-            editEngaged = true;
-        }
-    }
+    //private void toggleEdit() {
+    //    if (editEngaged) {
+    //        editEngaged = false;
+    //    }
+    //    else {
+    //        editEngaged = true;
+    //    }
+    //}
 
     private void buildWorkHistoryDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -155,6 +179,66 @@ public class ResumeActivity extends AppCompatActivity {
         dialogEducation = builder.create();
     }
 
+    private void buildSkillDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View view = getLayoutInflater().inflate(R.layout.dialogaddskill, null);
+
+        EditText skillInput = view.findViewById(R.id.editTextUserInputSkill);
+
+        builder.setView(view);
+        builder.setTitle("Add Skill")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Skill skill = new Skill(skillInput.getText().toString());
+                        currentUserProfile.addToSkills(skill);
+                        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                        FirebaseDatabase.getInstance().getReference("Profiles")
+                                .child(currentUser.getUid()).setValue(currentUserProfile);
+                        generateCards();
+                        Toast.makeText(ResumeActivity.this, "Skill added.", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+        dialogSkill = builder.create();
+    }
+
+    private void buildReferenceDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View view = getLayoutInflater().inflate(R.layout.dialogaddreference, null);
+
+        EditText nameInput = view.findViewById(R.id.editTextUserInputReferenceName);
+        EditText relationshipInput = view.findViewById(R.id.editTextUserInputReferenceRelationship);
+        EditText phoneInput = view.findViewById(R.id.editTextUserInputReferencePhone);
+
+        builder.setView(view);
+        builder.setTitle("Add Skill")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Reference reference = new Reference(nameInput.getText().toString(), relationshipInput.getText().toString(), phoneInput.getText().toString());
+                        currentUserProfile.addToReferences(reference);
+                        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                        FirebaseDatabase.getInstance().getReference("Profiles")
+                                .child(currentUser.getUid()).setValue(currentUserProfile);
+                        generateCards();
+                        Toast.makeText(ResumeActivity.this, "Reference added.", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+        dialogReference = builder.create();
+    }
+
     private void generateCards() {
         layout.removeViewsInLayout(0,layout.getChildCount());
         Typeface typeface = ResourcesCompat.getFont(this,R.font.vertigoflf);
@@ -164,6 +248,21 @@ public class ResumeActivity extends AppCompatActivity {
         textViewWorkExperience.setTextSize(25);
         textViewWorkExperience.setTypeface(typeface);
         layout.addView(textViewWorkExperience);
+
+        LinearLayout.LayoutParams layoutParamsExperience = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+
+        layoutParamsExperience.topMargin = -95;
+        layoutParamsExperience.leftMargin = 285;
+
+        btnAddToExperience = new ImageButton(this);
+        btnAddToExperience.setImageResource(R.drawable.ic_add_icon);
+        btnAddToExperience.setBackgroundColor(Color.TRANSPARENT);
+        btnAddToExperience.setLayoutParams(layoutParamsExperience);
+        layout.addView(btnAddToExperience);
+
         List<WorkExperience> currentWorkExperienceList = currentUserProfile.getResume().getExperienceList();
         for (WorkExperience workExperience : currentWorkExperienceList) {
             View view = getLayoutInflater().inflate(R.layout.workcards, null);
@@ -206,11 +305,26 @@ public class ResumeActivity extends AppCompatActivity {
             layout.addView(view);
         }
 
+        LinearLayout.LayoutParams layoutParamsEducation = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+
+
         TextView textViewEducation = new TextView(this);
         textViewEducation.setText("Education:");
         textViewEducation.setTextSize(25);
         textViewEducation.setTypeface(typeface);
         layout.addView(textViewEducation);
+
+        layoutParamsEducation.topMargin = -95;
+        layoutParamsEducation.leftMargin = 175;
+
+        btnAddToEducation = new ImageButton(this);
+        btnAddToEducation.setImageResource(R.drawable.ic_add_icon);
+        btnAddToEducation.setBackgroundColor(Color.TRANSPARENT);
+        btnAddToEducation.setLayoutParams(layoutParamsEducation);
+        layout.addView(btnAddToEducation);
 
         List<Education> currentEducationList = currentUserProfile.getResume().getEducationList();
         for (Education education : currentEducationList) {
@@ -238,7 +352,7 @@ public class ResumeActivity extends AppCompatActivity {
                         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
                         FirebaseDatabase.getInstance().getReference("Profiles")
                                 .child(currentUser.getUid()).setValue(currentUserProfile);
-                        Toast.makeText(ResumeActivity.this, "Work history removed.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ResumeActivity.this, "Education removed.", Toast.LENGTH_SHORT).show();
                         layout.removeView(view);
                     }
                 });
@@ -258,7 +372,50 @@ public class ResumeActivity extends AppCompatActivity {
         textViewSkills.setTypeface(typeface);
         layout.addView(textViewSkills);
 
+        LinearLayout.LayoutParams layoutParamsSkill = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+
+        layoutParamsSkill.topMargin = -95;
+        layoutParamsSkill.leftMargin = 100;
+
+        btnAddToSkills = new ImageButton(this);
+        btnAddToSkills.setImageResource(R.drawable.ic_add_icon);
+        btnAddToSkills.setBackgroundColor(Color.TRANSPARENT);
+        btnAddToSkills.setLayoutParams(layoutParamsSkill);
+        layout.addView(btnAddToSkills);
+
         // add in skill cards
+        List<Skill> currentSkillList = currentUserProfile.getResume().getSkillList();
+        for (Skill skill : currentSkillList) {
+            View view = getLayoutInflater().inflate(R.layout.skillcards, null);
+
+            TextView skillView = view.findViewById(R.id.textViewSkillFromUser);
+
+            Button btnDeleteSkill = view.findViewById(R.id.buttonDeleteSkill);
+
+            skillView.setText(skill.getSkill());
+
+            if (editEngaged) {
+                btnDeleteSkill.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        currentUserProfile.removeSkill(skill);
+                        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                        FirebaseDatabase.getInstance().getReference("Profiles")
+                                .child(currentUser.getUid()).setValue(currentUserProfile);
+                        Toast.makeText(ResumeActivity.this, "Skill removed.", Toast.LENGTH_SHORT).show();
+                        layout.removeView(view);
+                    }
+                });
+            }
+            else {
+                btnDeleteSkill.setEnabled(false);
+                btnDeleteSkill.setVisibility(View.INVISIBLE);
+            }
+            layout.addView(view);
+        }
 
 
         TextView textViewReferences = new TextView(this);
@@ -266,6 +423,54 @@ public class ResumeActivity extends AppCompatActivity {
         textViewReferences.setTextSize(25);
         textViewReferences.setTypeface(typeface);
         layout.addView(textViewReferences);
+
+        LinearLayout.LayoutParams layoutParamsReference = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+
+        layoutParamsReference.topMargin = -95;
+        layoutParamsReference.leftMargin = 200;
+
+        btnAddToReference = new ImageButton(this);
+        btnAddToReference.setImageResource(R.drawable.ic_add_icon);
+        btnAddToReference.setBackgroundColor(Color.TRANSPARENT);
+        btnAddToReference.setLayoutParams(layoutParamsReference);
+        layout.addView(btnAddToReference);
+
+        List<Reference> currentReferenceList = currentUserProfile.getResume().getReferenceList();
+        for (Reference reference : currentReferenceList) {
+            View view = getLayoutInflater().inflate(R.layout.addreferencecards, null);
+
+            TextView referenceNameInput = view.findViewById(R.id.textViewReferenceNameFromUser);
+            TextView referenceRelationshipInput = view.findViewById(R.id.textViewReferenceRelationshipFromUser);
+            TextView referencePhoneInput = view.findViewById(R.id.textViewReferencePhoneUserInput);
+
+            Button btnDeleteSkill = view.findViewById(R.id.buttonDeleteReference);
+
+            referenceNameInput.setText(reference.getName());
+            referenceRelationshipInput.setText(reference.getRelationship());
+            referencePhoneInput.setText(reference.getPhone());
+
+            if (editEngaged) {
+                btnDeleteSkill.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        currentUserProfile.removeReference(reference);
+                        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                        FirebaseDatabase.getInstance().getReference("Profiles")
+                                .child(currentUser.getUid()).setValue(currentUserProfile);
+                        Toast.makeText(ResumeActivity.this, "Reference removed.", Toast.LENGTH_SHORT).show();
+                        layout.removeView(view);
+                    }
+                });
+            }
+            else {
+                btnDeleteSkill.setEnabled(false);
+                btnDeleteSkill.setVisibility(View.INVISIBLE);
+            }
+            layout.addView(view);
+        }
     }
 
     private boolean checkIfUsersProfile() {
