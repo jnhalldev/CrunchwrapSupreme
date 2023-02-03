@@ -64,7 +64,7 @@
             android:id="@+id/editTextBioEditBio"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890(){}[]/\!.?,:;-\n "
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890(){}[]/\!.?,:;-'\n "
             android:fontFamily="@font/vertigoflfbold"
             android:text=""
             android:textSize="32dp"
