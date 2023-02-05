@@ -9,23 +9,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import kotlinx.coroutines.Job;
-
-
-
-public class classJobPosting extends AppCompatActivity {
+public class HelpActivity extends AppCompatActivity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_class_job_posting);
+        setContentView(R.layout.activity__help);
 
         Button Submit = findViewById(R.id.Complete);
         Submit.setOnClickListener(new View.OnClickListener() {
