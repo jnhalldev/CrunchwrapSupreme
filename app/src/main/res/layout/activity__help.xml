@@ -27,7 +27,7 @@
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:fontFamily="@font/vertigoflfbold"
-        android:hint="Required experience "
+        android:hint="Description"
         android:inputType="textPersonName"
         android:textSize="24dp"
         android:textStyle="bold"
@@ -76,7 +76,7 @@
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:fontFamily="@font/vertigoflfbold"
-        android:hint="Shift Postion"
+        android:hint="Shift"
         android:inputType="textPersonName"
         android:textSize="24dp"
         android:textStyle="bold"
@@ -93,7 +93,7 @@
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:fontFamily="@font/vertigoflfbold"
-        android:hint="Name Postion"
+        android:hint="Postion"
         android:inputType="textPersonName"
         android:textSize="24dp"
         android:textStyle="bold"
@@ -110,7 +110,7 @@
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:fontFamily="@font/vertigoflfbold"
-        android:hint="Name of Company"
+        android:hint="Company"
         android:textSize="24dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/Postion"
@@ -128,5 +128,54 @@
         android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextNumberCompensation"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textAlignment="viewEnd"
+        app:layout_constraintBottom_toTopOf="@+id/Nameofcompany"
+        app:layout_constraintEnd_toStartOf="@+id/textView8"
+        app:layout_constraintStart_toEndOf="@+id/JobBack"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:dropDownWidth="wrap_content"
+        android:entries="@array/CompensationBy"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toTopOf="@+id/Nameofcompany"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:text="/"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/Nameofcompany"
+        app:layout_constraintEnd_toStartOf="@+id/spinner"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:text="$"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/Nameofcompany"
+        app:layout_constraintEnd_toStartOf="@+id/editTextNumberCompensation"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

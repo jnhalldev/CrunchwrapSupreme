@@ -99,13 +99,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Help_Page"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".SignInActivity"
             android:exported="false">
             <meta-data

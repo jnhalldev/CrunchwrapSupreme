@@ -1,6 +1,9 @@
 package com.example.crunchwrapsupreme;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserProfile {
     private String firstName;
     private String lastName;
@@ -10,6 +13,7 @@ public class UserProfile {
     private String profilePicture;
     private Resume resume = new Resume();
     private String bio;
+    private List<JobPosting> helpPostingList;
 
     UserProfile() {
     }
@@ -21,6 +25,7 @@ public class UserProfile {
         password = p;
         profilePicture = "";
         bio = "";
+        helpPostingList = new ArrayList<JobPosting>();
     }
 
     public void setFirstName(String s) {
@@ -125,5 +130,17 @@ public class UserProfile {
 
     public void removeReference(Reference reference) {
         this.resume.removeReferenceFromList(reference);
+    }
+
+    public void addHelpPostingToList(JobPosting jobPosting) {
+        helpPostingList.add(jobPosting);
+    }
+
+    public boolean removeHelpPostingFromList(JobPosting jobPosting) {
+        return helpPostingList.remove(jobPosting);
+    }
+
+    public List<JobPosting> getHelpPostingList() {
+        return helpPostingList;
     }
 }
