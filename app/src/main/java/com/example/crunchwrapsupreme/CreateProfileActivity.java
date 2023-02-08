@@ -179,7 +179,7 @@ public class CreateProfileActivity extends AppCompatActivity {
                                             }
                                         });
                             } else {
-                                Toast.makeText(CreateProfileActivity.this, "Account already exists", Toast.LENGTH_LONG).show();
+                                Toast.makeText(CreateProfileActivity.this, "An error occurred. Check fields.", Toast.LENGTH_LONG).show();
                             }
                         }
                     });

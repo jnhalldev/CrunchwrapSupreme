@@ -1,5 +1,7 @@
 package com.example.crunchwrapsupreme;
 
+import static com.example.crunchwrapsupreme.ProfileActivity.currentUserProfile;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,12 +16,14 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.UUID;
 
 
 public class HelpActivity extends AppCompatActivity {
@@ -36,7 +40,6 @@ public class HelpActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 createJobPosting();
-                showMainActivity();
             }
         });
 
@@ -59,29 +62,28 @@ public class HelpActivity extends AppCompatActivity {
         EditText compensationAmount = findViewById(R.id.editTextNumberCompensation);
         Spinner compensationUnit = findViewById(R.id.spinner);
 
-        boolean companyFilled = false;
-        boolean positionFilled = false;
-        boolean shiftFilled = false;
-        boolean locationFilled = false;
-        boolean addressFilled = false;
-        boolean compensationFilled = false;
+        boolean companyFilled = true;
+        boolean positionFilled = true;
+        boolean shiftFilled = true;
+        boolean locationFilled = true;
+        boolean addressFilled = true;
+        boolean compensationFilled = true;
 
-        if (NameOfCompanyText.getText().toString() != "") {companyFilled = true;}
-        if (positionText.getText().toString() != "") {positionFilled = true;}
-        if (LocationText.getText().toString() != "") {locationFilled = true;}
-        if (ShiftText.getText().toString() != "") {shiftFilled = true;}
-        if (AddressText.getText().toString() != "") {addressFilled = true;}
-        if (compensationAmount.getText().toString() != "") {compensationFilled = true;}
+        if (NameOfCompanyText.getText().toString().matches("")) {companyFilled = false;}
+        else if (positionText.getText().toString().matches("")) {positionFilled = false;}
+        else if (LocationText.getText().toString().matches("")) {locationFilled = false;}
+        else if (ShiftText.getText().toString().matches("")) {shiftFilled = false;}
+        else if (AddressText.getText().toString().matches("")) {addressFilled = false;}
+        else if (compensationAmount.getText().toString().matches("")) {compensationFilled = false;}
 
 
         if (companyFilled && positionFilled && shiftFilled && locationFilled && addressFilled && compensationFilled) {
-            JobPosting jobPosting = new JobPosting(NameOfCompanyText.getText().toString(), positionText.getText().toString(),
-                    LocationText.getText().toString(),ShiftText.getText().toString(), AddressText.getText().toString(),
-                    requirementsText.getText().toString());
-            SimpleDateFormat dateTimeFormatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-            Date date = new Date();
+            String postID = UUID.randomUUID().toString();
+            JobPosting jobPosting = new JobPosting(postID, FirebaseAuth.getInstance().getCurrentUser().getUid().toString(), NameOfCompanyText.getText().toString(),
+                    positionText.getText().toString(), LocationText.getText().toString(),ShiftText.getText().toString(), AddressText.getText().toString(),
+                    requirementsText.getText().toString(), compensationAmount.getText().toString(), compensationUnit.getSelectedItem().toString());
             FirebaseDatabase.getInstance().getReference("Job Postings")
-                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid() + dateTimeFormatter.format(date))
+                    .child(postID)
                     .setValue(jobPosting).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -89,7 +91,8 @@ public class HelpActivity extends AppCompatActivity {
                             showMainActivity();
                         }
                     });
-            //JobPostingsList.add(jobPosting);
+            currentUserProfile.addHelpPostingToList(jobPosting);
+
         }
         else {
             Toast.makeText(HelpActivity.this, "Check fields", Toast.LENGTH_LONG).show();

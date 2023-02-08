@@ -1,67 +1,102 @@
 package com.example.crunchwrapsupreme;
 
 public class JobPosting {
-    String NameOfCompanyText;
-    String PositionText;
-    String LocationText;
-    String ShiftText;
-    String AddressText;
-    String RequirmentsText;
+    String postingID;
+    String userID;
+    String company;
+    String position;
+    String location;
+    String shift;
+    String address;
+    String description;
+    String compensationAmount;
+    String compensationUnit;
 
-    public JobPosting(String nameOfCompanyText, String positionText, String locationText, String shiftText, String addressText, String requirmentsText) {
-        NameOfCompanyText = nameOfCompanyText;
-        PositionText = positionText;
-        LocationText = locationText;
-        ShiftText = shiftText;
-        AddressText = addressText;
-        RequirmentsText = requirmentsText;
+    public JobPosting() {
+
+    }
+    public JobPosting(String postingID, String userID, String company, String position, String location, String shift, String address, String description, String compensationAmount, String compensationUnit) {
+        this.postingID = postingID;
+        this.userID = userID;
+        this.company = company;
+        this.position = position;
+        this.location = location;
+        this.shift = shift;
+        this.address = address;
+        this.description = description;
+        this.compensationAmount = compensationAmount;
+        this.compensationUnit = compensationUnit;
     }
 
     public String getNameOfCompanyText() {
-        return NameOfCompanyText;
+        return company;
     }
 
     public void setNameOfCompanyText(String nameOfCompanyText) {
-        NameOfCompanyText = nameOfCompanyText;
+        company = nameOfCompanyText;
     }
 
     public String getPositionText() {
-        return PositionText;
+        return position;
     }
 
     public void setPositionText(String positionText) {
-        PositionText = positionText;
+        position = positionText;
     }
 
     public String getLocationText() {
-        return LocationText;
+        return location;
     }
 
     public void setLocationText(String locationText) {
-        LocationText = locationText;
+        location = locationText;
     }
 
     public String getShiftText() {
-        return ShiftText;
+        return shift;
     }
 
     public void setShiftText(String shiftText) {
-        ShiftText = shiftText;
+        shift = shiftText;
     }
 
     public String getAddressText() {
-        return AddressText;
+        return address;
     }
 
     public void setAddressText(String addressText) {
-        AddressText = addressText;
+        address = addressText;
     }
 
-    public String getRequirmentsText() {
-        return RequirmentsText;
+    public String getDescription() {
+        return description;
     }
 
-    public void setRequirmentsText(String requirmentsText) {
-        RequirmentsText = requirmentsText;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCompensationAmount() {
+        return compensationAmount;
+    }
+
+    public void setCompensationAmount(String compensationAmount) {
+        this.compensationAmount = compensationAmount;
+    }
+
+    public String getCompensationUnit() {
+        return compensationUnit;
+    }
+
+    public void setCompensationUnit(String compensationUnit) {
+        this.compensationUnit = compensationUnit;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 }

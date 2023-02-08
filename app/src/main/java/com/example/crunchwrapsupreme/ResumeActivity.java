@@ -58,7 +58,9 @@ public class ResumeActivity extends AppCompatActivity {
         btnAddToExperience.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 dialogWorkHistory.show();
+                //reloadActivity();
             }
         });
 
@@ -122,6 +124,7 @@ public class ResumeActivity extends AppCompatActivity {
                         FirebaseDatabase.getInstance().getReference("Profiles")
                                 .child(currentUser.getUid()).setValue(currentUserProfile);
                         Toast.makeText(ResumeActivity.this, "Work history added.", Toast.LENGTH_SHORT).show();
+                        reloadActivity();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -131,7 +134,6 @@ public class ResumeActivity extends AppCompatActivity {
                     }
                 });
         dialogWorkHistory = builder.create();
-        generateCards();
     }
 
     private void buildEducationDialog() {
@@ -157,6 +159,7 @@ public class ResumeActivity extends AppCompatActivity {
                                 .child(currentUser.getUid()).setValue(currentUserProfile);
                         generateCards();
                         Toast.makeText(ResumeActivity.this, "Education added.", Toast.LENGTH_SHORT).show();
+                        reloadActivity();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -166,7 +169,6 @@ public class ResumeActivity extends AppCompatActivity {
                     }
                 });
         dialogEducation = builder.create();
-        generateCards();
     }
 
     private void buildSkillDialog() {
@@ -187,6 +189,7 @@ public class ResumeActivity extends AppCompatActivity {
                                 .child(currentUser.getUid()).setValue(currentUserProfile);
                         generateCards();
                         Toast.makeText(ResumeActivity.this, "Skill added.", Toast.LENGTH_SHORT).show();
+                        reloadActivity();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -196,7 +199,6 @@ public class ResumeActivity extends AppCompatActivity {
                     }
                 });
         dialogSkill = builder.create();
-        generateCards();
     }
 
     private void buildReferenceDialog() {
@@ -219,6 +221,7 @@ public class ResumeActivity extends AppCompatActivity {
                                 .child(currentUser.getUid()).setValue(currentUserProfile);
                         generateCards();
                         Toast.makeText(ResumeActivity.this, "Reference added.", Toast.LENGTH_SHORT).show();
+                        reloadActivity();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -228,7 +231,6 @@ public class ResumeActivity extends AppCompatActivity {
                     }
                 });
         dialogReference = builder.create();
-        generateCards();
     }
 
     private void generateCards() {
@@ -288,7 +290,7 @@ public class ResumeActivity extends AppCompatActivity {
                                 .child(currentUser.getUid()).setValue(currentUserProfile);
                         Toast.makeText(ResumeActivity.this, "Work history removed.", Toast.LENGTH_SHORT).show();
                         layout.removeView(view);
-                        generateCards();
+                        reloadActivity();
                     }
                 });
             }
@@ -351,7 +353,7 @@ public class ResumeActivity extends AppCompatActivity {
                                 .child(currentUser.getUid()).setValue(currentUserProfile);
                         Toast.makeText(ResumeActivity.this, "Education removed.", Toast.LENGTH_SHORT).show();
                         layout.removeView(view);
-                        generateCards();
+                        reloadActivity();
                     }
                 });
             }
@@ -407,7 +409,7 @@ public class ResumeActivity extends AppCompatActivity {
                                 .child(currentUser.getUid()).setValue(currentUserProfile);
                         Toast.makeText(ResumeActivity.this, "Skill removed.", Toast.LENGTH_SHORT).show();
                         layout.removeView(view);
-                        generateCards();
+                        reloadActivity();
                     }
                 });
             }
@@ -465,7 +467,7 @@ public class ResumeActivity extends AppCompatActivity {
                                 .child(currentUser.getUid()).setValue(currentUserProfile);
                         Toast.makeText(ResumeActivity.this, "Reference removed.", Toast.LENGTH_SHORT).show();
                         layout.removeView(view);
-                        generateCards();
+                        reloadActivity();
                     }
                 });
             }
@@ -483,5 +485,11 @@ public class ResumeActivity extends AppCompatActivity {
         // Once able to find other profiles, will implement check of current user profile against profile being displayed
         //
         return isUser;
+    }
+
+    private void reloadActivity() {
+        Intent intent = new Intent(this, ResumeActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
