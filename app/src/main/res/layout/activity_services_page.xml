@@ -7,6 +7,76 @@
     tools:context=".Services_Page">
 
     <TextView
+        android:id="@+id/Create_AD_Text"
+        android:layout_width="155dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="66dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginBottom="19dp"
+        android:fontFamily="@font/vertigoflfbold"
+        android:text="Create Ads"
+        android:textAlignment="center"
+        android:textColor="#FFA617"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView13"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/create_AD_Text"
+        android:layout_width="155dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginBottom="38dp"
+        android:fontFamily="@font/vertigoflfbold"
+        android:text="Manage Ads"
+        android:textAlignment="center"
+        android:textColor="#FFA617"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView17"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AD_Create"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/AD_Create"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="142dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="143dp"
+        android:background="@android:color/transparent"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Create_AD_Text" />
+
+    <Button
+        android:id="@+id/AD_Manage"
+        android:layout_width="126dp"
+        android:layout_height="145dp"
+        android:layout_marginStart="142dp"
+        android:layout_marginTop="164dp"
+        android:layout_marginEnd="143dp"
+        android:layout_marginBottom="185dp"
+        android:background="@android:color/transparent"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AD_Create" />
+
+    <TextView
         android:id="@+id/textView9"
         android:layout_width="187dp"
         android:layout_height="100dp"
@@ -22,21 +92,51 @@
 
     <Button
         android:id="@+id/homeButton3"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="3dp"
+        android:layout_width="79dp"
+        android:layout_height="32dp"
         android:layout_marginTop="3dp"
+        android:layout_marginBottom="803dp"
         android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView11"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView11"
         android:layout_width="45dp"
         android:layout_height="35dp"
-        android:layout_marginStart="3dp"
         android:layout_marginTop="3dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/home" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="126dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="142dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="143dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/create_AD_Text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:srcCompat="@drawable/advertising" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="126dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="142dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="143dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AD_Create"
+        app:srcCompat="@drawable/promotion" />
 </androidx.constraintlayout.widget.ConstraintLayout>

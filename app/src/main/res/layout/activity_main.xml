@@ -11,7 +11,7 @@
         android:id="@+id/textView"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="60dp"
         android:fontFamily="cursive"
         android:text="@string/jobz"
         android:textAlignment="center"
@@ -73,26 +73,6 @@
         app:layout_constraintTop_toBottomOf="@+id/MESSAGES"
         app:srcCompat="@drawable/contact" />
 
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="130dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MAP"
-        app:srcCompat="@drawable/resume" />
-
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="130dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CONTACT"
-        app:srcCompat="@drawable/settings" />
-
     <TextView
         android:id="@+id/HELP"
         android:layout_width="129dp"
@@ -134,38 +114,6 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView7" />
-
-    <TextView
-        android:id="@+id/SETTINGS"
-        android:layout_width="129dp"
-        android:layout_height="59dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="5dp"
-        android:fontFamily="@font/vertigoflfbold"
-        android:text="SETTINGS"
-        android:textAlignment="center"
-        android:textColor="#FFA617"
-        android:textSize="48sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
-
-    <TextView
-        android:id="@+id/PROFILE"
-        android:layout_width="129dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginBottom="5dp"
-        android:fontFamily="@font/vertigoflfbold"
-        android:text="PROFILE"
-        android:textAlignment="center"
-        android:textColor="#FFA617"
-        android:textSize="48sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
     <TextView
         android:id="@+id/SERVICES"
@@ -298,6 +246,73 @@
         app:layout_constraintStart_toStartOf="@+id/CONTACT"
         app:layout_constraintTop_toTopOf="@+id/imageView7" />
 
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="130dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CONTACT"
+        app:srcCompat="@drawable/settings" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="130dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MAP"
+        app:srcCompat="@drawable/resume" />
+
+    <TextView
+        android:id="@+id/PROFILE"
+        android:layout_width="129dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/vertigoflfbold"
+        android:text="PROFILE"
+        android:textAlignment="center"
+        android:textColor="#FFA617"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/SETTINGS"
+        android:layout_width="129dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/vertigoflfbold"
+        android:text="SETTINGS"
+        android:textAlignment="center"
+        android:textColor="#FFA617"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView9"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/settingsButton"
+        android:layout_width="127dp"
+        android:layout_height="124dp"
+        android:background="@android:color/transparent"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/SETTINGS"
+        app:layout_constraintEnd_toEndOf="@+id/SETTINGS"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/SETTINGS"
+        app:layout_constraintTop_toTopOf="@+id/imageView9"
+        app:layout_constraintVertical_bias="1.0" />
+
     <Button
         android:id="@+id/profileButton"
         android:layout_width="127dp"
@@ -310,17 +325,21 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/imageView8"
         app:layout_constraintTop_toTopOf="@+id/imageView8"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.666" />
 
-    <Button
-        android:id="@+id/settingsButton"
-        android:layout_width="127dp"
-        android:layout_height="124dp"
-        android:background="@android:color/transparent"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/SETTINGS"
-        app:layout_constraintEnd_toEndOf="@+id/SETTINGS"
-        app:layout_constraintStart_toStartOf="@+id/SETTINGS"
-        app:layout_constraintTop_toTopOf="@+id/imageView9" />
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/mAdView"
+        android:layout_width="408dp"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
         
 </androidx.constraintlayout.widget.ConstraintLayout>
