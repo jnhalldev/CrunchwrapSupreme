@@ -47,7 +47,7 @@ public class HelpActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-                showMainActivity();
+                showMyHelpPostingsActivity();
             }
         });
 
@@ -88,19 +88,17 @@ public class HelpActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             Toast.makeText(HelpActivity.this, "Job posting created successfully.", Toast.LENGTH_LONG).show();
-                            showMainActivity();
+                            showMyHelpPostingsActivity();
                         }
                     });
-            currentUserProfile.addHelpPostingToList(jobPosting);
-
         }
         else {
             Toast.makeText(HelpActivity.this, "Check fields", Toast.LENGTH_LONG).show();
         }
     };
 
-    private void showMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
+    private void showMyHelpPostingsActivity() {
+        Intent intent = new Intent(this, ViewMyHelpPostingsActivity.class);
         startActivity(intent);
         finish();
     }

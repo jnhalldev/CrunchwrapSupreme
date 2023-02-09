@@ -54,13 +54,6 @@ public class WorkSearchActivity extends AppCompatActivity {
                 ShowMainActivity();
             }
         });
-        Button NewPosting = findViewById(R.id.Work_Owner_Posting);
-        NewPosting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view ) {
-                    classJobPosting();
-        }
-        });
     }
     public void ShowMainActivity(){
         Intent intent = new Intent(this, MainActivity.class);

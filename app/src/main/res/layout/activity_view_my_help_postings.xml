@@ -15,13 +15,11 @@
         tools:context=".MainActivity">
 
 
-
         <EditText
-            android:id="@+id/editTextSearchValue"
+            android:id="@+id/editTextFindMyPostingSearchValue"
             android:layout_width="0dp"
             android:layout_height="45dp"
             android:layout_marginStart="64dp"
-            android:layout_marginTop="4dp"
             android:layout_marginEnd="64dp"
             android:ems="10"
             android:hint="Search"
@@ -29,16 +27,16 @@
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/textViewMyHelpPostings"
             tools:visibility="visible" />
 
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textViewMyHelpPostings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/search"
+            android:text="My Postings"
             android:textAlignment="center"
             android:textColorHighlight="#FFC107"
             android:textColorHint="#BF9927"
@@ -47,22 +45,36 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <Button
+            android:id="@+id/buttonNewHelpPosting"
+            android:layout_width="328dp"
+            android:layout_height="69dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#FFA617"
+            android:fontFamily="@font/vertigoflfbold"
+            android:text="New Help Posting"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <ScrollView
-            android:id="@+id/scrollViewHelpWanted"
+            android:id="@+id/scrollViewMyHelpWanted"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:paddingBottom="60dp"
             android:scrollbars="none"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/buttonNewHelpPosting"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextSearchValue"
+            app:layout_constraintTop_toBottomOf="@+id/editTextFindMyPostingSearchValue"
             app:layout_constraintVertical_bias="0.0">
 
 
             <LinearLayout
-                android:id="@+id/containerHelpWanted"
+                android:id="@+id/containerMyHelpPostings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -71,12 +83,12 @@
         </ScrollView>
 
         <ImageButton
-            android:id="@+id/imageButtonSearch"
+            android:id="@+id/imageButtonSearchMyPostings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/editTextSearchValue"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextFindMyPostingSearchValue"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/editTextSearchValue"
+            app:layout_constraintStart_toEndOf="@+id/editTextFindMyPostingSearchValue"
             app:srcCompat="@android:drawable/ic_menu_search" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -84,7 +96,7 @@
 
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonMyHelpPostingsBack"
         android:layout_width="wrap_content"
         android:layout_height="46dp"
         android:layout_marginStart="12dp"
@@ -94,7 +106,6 @@
         android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
