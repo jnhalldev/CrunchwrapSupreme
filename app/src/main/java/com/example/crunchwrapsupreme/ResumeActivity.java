@@ -46,8 +46,6 @@ public class ResumeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resume);
 
-        //btnAddToExperience = findViewById(R.id.buttonAddToExperience);
-        //btnAddToEducation = findViewById(R.id.buttonAddToEducation);
         layout = findViewById(R.id.containerWorkHistory);
         generateCards();
 
@@ -60,7 +58,9 @@ public class ResumeActivity extends AppCompatActivity {
         btnAddToExperience.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 dialogWorkHistory.show();
+                //reloadActivity();
             }
         });
 
@@ -100,15 +100,6 @@ public class ResumeActivity extends AppCompatActivity {
         finish();
     }
 
-    //private void toggleEdit() {
-    //    if (editEngaged) {
-    //        editEngaged = false;
-    //    }
-    //    else {
-    //        editEngaged = true;
-    //    }
-    //}
-
     private void buildWorkHistoryDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View view = getLayoutInflater().inflate(R.layout.dialogaddworkexperience, null);
@@ -132,8 +123,8 @@ public class ResumeActivity extends AppCompatActivity {
                         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
                         FirebaseDatabase.getInstance().getReference("Profiles")
                                 .child(currentUser.getUid()).setValue(currentUserProfile);
-                        generateCards();
                         Toast.makeText(ResumeActivity.this, "Work history added.", Toast.LENGTH_SHORT).show();
+                        reloadActivity();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -168,6 +159,7 @@ public class ResumeActivity extends AppCompatActivity {
                                 .child(currentUser.getUid()).setValue(currentUserProfile);
                         generateCards();
                         Toast.makeText(ResumeActivity.this, "Education added.", Toast.LENGTH_SHORT).show();
+                        reloadActivity();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -197,6 +189,7 @@ public class ResumeActivity extends AppCompatActivity {
                                 .child(currentUser.getUid()).setValue(currentUserProfile);
                         generateCards();
                         Toast.makeText(ResumeActivity.this, "Skill added.", Toast.LENGTH_SHORT).show();
+                        reloadActivity();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -228,6 +221,7 @@ public class ResumeActivity extends AppCompatActivity {
                                 .child(currentUser.getUid()).setValue(currentUserProfile);
                         generateCards();
                         Toast.makeText(ResumeActivity.this, "Reference added.", Toast.LENGTH_SHORT).show();
+                        reloadActivity();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -258,6 +252,8 @@ public class ResumeActivity extends AppCompatActivity {
         layoutParamsExperience.leftMargin = 285;
 
         btnAddToExperience = new ImageButton(this);
+        btnAddToExperience.setFocusable(true);
+        btnAddToExperience.setClickable(true);
         btnAddToExperience.setImageResource(R.drawable.ic_add_icon);
         btnAddToExperience.setBackgroundColor(Color.TRANSPARENT);
         btnAddToExperience.setLayoutParams(layoutParamsExperience);
@@ -294,6 +290,7 @@ public class ResumeActivity extends AppCompatActivity {
                                 .child(currentUser.getUid()).setValue(currentUserProfile);
                         Toast.makeText(ResumeActivity.this, "Work history removed.", Toast.LENGTH_SHORT).show();
                         layout.removeView(view);
+                        reloadActivity();
                     }
                 });
             }
@@ -321,6 +318,8 @@ public class ResumeActivity extends AppCompatActivity {
         layoutParamsEducation.leftMargin = 175;
 
         btnAddToEducation = new ImageButton(this);
+        btnAddToEducation.setFocusable(true);
+        btnAddToEducation.setClickable(true);
         btnAddToEducation.setImageResource(R.drawable.ic_add_icon);
         btnAddToEducation.setBackgroundColor(Color.TRANSPARENT);
         btnAddToEducation.setLayoutParams(layoutParamsEducation);
@@ -354,6 +353,7 @@ public class ResumeActivity extends AppCompatActivity {
                                 .child(currentUser.getUid()).setValue(currentUserProfile);
                         Toast.makeText(ResumeActivity.this, "Education removed.", Toast.LENGTH_SHORT).show();
                         layout.removeView(view);
+                        reloadActivity();
                     }
                 });
             }
@@ -381,6 +381,8 @@ public class ResumeActivity extends AppCompatActivity {
         layoutParamsSkill.leftMargin = 100;
 
         btnAddToSkills = new ImageButton(this);
+        btnAddToSkills.setFocusable(true);
+        btnAddToSkills.setClickable(true);
         btnAddToSkills.setImageResource(R.drawable.ic_add_icon);
         btnAddToSkills.setBackgroundColor(Color.TRANSPARENT);
         btnAddToSkills.setLayoutParams(layoutParamsSkill);
@@ -407,6 +409,7 @@ public class ResumeActivity extends AppCompatActivity {
                                 .child(currentUser.getUid()).setValue(currentUserProfile);
                         Toast.makeText(ResumeActivity.this, "Skill removed.", Toast.LENGTH_SHORT).show();
                         layout.removeView(view);
+                        reloadActivity();
                     }
                 });
             }
@@ -433,6 +436,8 @@ public class ResumeActivity extends AppCompatActivity {
         layoutParamsReference.leftMargin = 200;
 
         btnAddToReference = new ImageButton(this);
+        btnAddToReference.setFocusable(true);
+        btnAddToReference.setClickable(true);
         btnAddToReference.setImageResource(R.drawable.ic_add_icon);
         btnAddToReference.setBackgroundColor(Color.TRANSPARENT);
         btnAddToReference.setLayoutParams(layoutParamsReference);
@@ -462,6 +467,7 @@ public class ResumeActivity extends AppCompatActivity {
                                 .child(currentUser.getUid()).setValue(currentUserProfile);
                         Toast.makeText(ResumeActivity.this, "Reference removed.", Toast.LENGTH_SHORT).show();
                         layout.removeView(view);
+                        reloadActivity();
                     }
                 });
             }
@@ -479,5 +485,11 @@ public class ResumeActivity extends AppCompatActivity {
         // Once able to find other profiles, will implement check of current user profile against profile being displayed
         //
         return isUser;
+    }
+
+    private void reloadActivity() {
+        Intent intent = new Intent(this, ResumeActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

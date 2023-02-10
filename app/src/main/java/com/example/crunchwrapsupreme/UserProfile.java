@@ -1,6 +1,11 @@
 package com.example.crunchwrapsupreme;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
+import kotlinx.coroutines.Job;
+
 public class UserProfile {
     private String firstName;
     private String lastName;
@@ -10,6 +15,7 @@ public class UserProfile {
     private String profilePicture;
     private Resume resume = new Resume();
     private String bio;
+    private List<JobPosting> helpWantedPostingKeys;
 
     UserProfile() {
     }
@@ -21,6 +27,7 @@ public class UserProfile {
         password = p;
         profilePicture = "";
         bio = "";
+        helpWantedPostingKeys = new ArrayList<JobPosting>();
     }
 
     public void setFirstName(String s) {
@@ -125,5 +132,17 @@ public class UserProfile {
 
     public void removeReference(Reference reference) {
         this.resume.removeReferenceFromList(reference);
+    }
+
+    public void addHelpPostingToList(JobPosting jobPosting) {
+        helpWantedPostingKeys.add(jobPosting);
+    }
+
+    public boolean removeHelpPostingFromList(JobPosting jobPosting) {
+        return helpWantedPostingKeys.remove(jobPosting);
+    }
+
+    public List<JobPosting> getHelpPostingList() {
+        return helpWantedPostingKeys;
     }
 }

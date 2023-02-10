@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">CrunchwrapSupreme</string>
+    <string-array name="CompensationBy">
+        <item>Hour</item>
+        <item>Day</item>
+        <item>Year</item>
+        <item>Project</item>
+    </string-array>
     <string name="back"><![CDATA[<]]></string>
     <string name="job_search">Job Search</string>
     <string name="backhomepage"><![CDATA[<]]></string>

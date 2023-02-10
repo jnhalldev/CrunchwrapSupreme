@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     Button messagesButton;
     Button mapButton;
     Button contactButton;
-    Button profileButton;
     Button settingsButton;
 
     @Override
@@ -51,6 +50,14 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        helpButton = findViewById(R.id.helpButton);
+        workButton = findViewById(R.id.workButton);
+        servicesButton = findViewById(R.id.servicesButton);
+        messagesButton = findViewById(R.id.messagesButton);
+        contactButton = findViewById(R.id.contactButton);
+        mapButton = findViewById(R.id.mapButton);
+        settingsButton = findViewById(R.id.settingsButton);
+
         Button buttonProfile = findViewById(R.id.profileButton);
         buttonProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,19 +66,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        helpButton = findViewById(R.id.helpButton);
-        workButton = findViewById(R.id.workButton);
-        servicesButton = findViewById(R.id.servicesButton);
-        messagesButton = findViewById(R.id.messagesButton);
-        contactButton = findViewById(R.id.contactButton);
-        mapButton = findViewById(R.id.mapButton);
-        profileButton = findViewById(R.id.profileButton);
-        settingsButton = findViewById(R.id.settingsButton);
-
         helpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Help_Page.class);
+                Intent intent = new Intent(MainActivity.this, ViewMyHelpPostingsActivity.class);
                 startActivity(intent);
             }
         });
@@ -80,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ShowWorkSearchActivity();
-
             }
         });
         servicesButton.setOnClickListener(new View.OnClickListener() {
@@ -108,13 +105,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, Map_Page.class);
-                startActivity(intent);
-            }
-        });
-        profileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
                 startActivity(intent);
             }
         });
