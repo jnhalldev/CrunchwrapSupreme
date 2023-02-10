@@ -2,6 +2,7 @@ package com.example.crunchwrapsupreme;
 
 import static com.example.crunchwrapsupreme.ProfileActivity.currentUserProfile;
 import static com.example.crunchwrapsupreme.ViewMyHelpPostingsActivity.editEngaged;
+import static com.example.crunchwrapsupreme.ViewMyHelpPostingsActivity.editJobPosting;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,17 +30,54 @@ import java.util.UUID;
 
 public class HelpActivity extends AppCompatActivity {
 
+    EditText NameOfCompanyText;
+    EditText positionText;
+    EditText LocationText;
+    EditText ShiftText;
+    EditText AddressText;
+    EditText requirementsText;
+    EditText compensationAmount;
+    Spinner compensationUnit;
+
+    boolean companyFilled = true;
+    boolean positionFilled = true;
+    boolean shiftFilled = true;
+    boolean locationFilled = true;
+    boolean addressFilled = true;
+    boolean compensationFilled = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__help);
 
+        NameOfCompanyText = findViewById(R.id.Nameofcompany);
+        positionText = findViewById(R.id.Postion);
+        LocationText = findViewById(R.id.Location);
+        ShiftText = findViewById(R.id.Shift);
+        AddressText = findViewById(R.id.Address);
+        requirementsText = findViewById(R.id.Requiredexperience);
+        compensationAmount = findViewById(R.id.editTextNumberCompensation);
+        compensationUnit = findViewById(R.id.spinner);
+
+        if (editEngaged) {
+            NameOfCompanyText.setText(editJobPosting.getNameOfCompanyText());
+            positionText.setText(editJobPosting.getPositionText());
+            LocationText.setText(editJobPosting.getLocationText());
+            ShiftText.setText(editJobPosting.getShiftText());
+            AddressText.setText(editJobPosting.getAddressText());
+            requirementsText.setText(editJobPosting.getDescription());
+            compensationAmount.setText(editJobPosting.getCompensationAmount());
+            if (editJobPosting.getCompensationUnit() == compensationUnit.getItemAtPosition(0)) {compensationUnit.setSelection(0);}
+            else if (editJobPosting.getCompensationUnit() == compensationUnit.getItemAtPosition(1)) {compensationUnit.setSelection(1);}
+            else if (editJobPosting.getCompensationUnit() == compensationUnit.getItemAtPosition(2)) {compensationUnit.setSelection(2);}
+            else if (editJobPosting.getCompensationUnit() == compensationUnit.getItemAtPosition(3)) {compensationUnit.setSelection(3);}
+        }
+
         Button btnSubmit = findViewById(R.id.Complete);
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 createJobPosting();
             }
         });
@@ -54,26 +92,7 @@ public class HelpActivity extends AppCompatActivity {
 
     }
     public void createJobPosting() {
-        EditText NameOfCompanyText = findViewById(R.id.Nameofcompany);
-        EditText positionText = findViewById(R.id.Postion);
-        EditText LocationText = findViewById(R.id.Location);
-        EditText ShiftText = findViewById(R.id.Shift);
-        EditText AddressText = findViewById(R.id.Address);
-        EditText requirementsText = findViewById(R.id.Requiredexperience);
-        EditText compensationAmount = findViewById(R.id.editTextNumberCompensation);
-        Spinner compensationUnit = findViewById(R.id.spinner);
 
-        boolean companyFilled = true;
-        boolean positionFilled = true;
-        boolean shiftFilled = true;
-        boolean locationFilled = true;
-        boolean addressFilled = true;
-        boolean compensationFilled = true;
-
-        if (editEngaged) {
-
-            //NameOfCompanyText.setText();
-        }
 
         if (NameOfCompanyText.getText().toString().matches("")) {companyFilled = false;}
         else if (positionText.getText().toString().matches("")) {positionFilled = false;}
@@ -94,6 +113,7 @@ public class HelpActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             Toast.makeText(HelpActivity.this, "Job posting created successfully.", Toast.LENGTH_LONG).show();
+                            if (editEngaged) {editEngaged = false;}
                             showMyHelpPostingsActivity();
                         }
                     });
@@ -104,6 +124,7 @@ public class HelpActivity extends AppCompatActivity {
     };
 
     private void showMyHelpPostingsActivity() {
+        if (editEngaged) {editEngaged = false;}
         Intent intent = new Intent(this, ViewMyHelpPostingsActivity.class);
         startActivity(intent);
         finish();

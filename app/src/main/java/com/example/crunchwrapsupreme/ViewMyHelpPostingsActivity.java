@@ -79,7 +79,6 @@ public class ViewMyHelpPostingsActivity extends AppCompatActivity {
                     layout.removeViewsInLayout(0,layout.getChildCount());
                     for (DataSnapshot posting : dataSnapshot.getChildren()) {
                         JobPosting postingInfo = posting.getValue((JobPosting.class));
-                        editJobPosting = postingInfo;
 
                         if (postingInfo.getUserID() == FirebaseAuth.getInstance().getCurrentUser().getUid()) {
                             View view = getLayoutInflater().inflate(R.layout.helpwantedcard, null);
@@ -107,6 +106,7 @@ public class ViewMyHelpPostingsActivity extends AppCompatActivity {
                                     @Override
                                     public void onClick(View v) {
                                         // Got to View Posting Activity loaded with info
+                                        editJobPosting = postingInfo;
                                         editEngaged = true;
                                         showCreateHelpPosting();
                                     }
@@ -131,7 +131,6 @@ public class ViewMyHelpPostingsActivity extends AppCompatActivity {
                     for (DataSnapshot posting : dataSnapshot.getChildren()) {
                         JobPosting postingInfo = posting.getValue((JobPosting.class));
 
-                        editJobPosting = postingInfo;
                         if (postingInfo.getUserID().toString().matches(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())) {
                             View view = getLayoutInflater().inflate(R.layout.helpwantedcard, null);
 
@@ -154,6 +153,7 @@ public class ViewMyHelpPostingsActivity extends AppCompatActivity {
                                 @Override
                                 public void onClick(View v) {
                                     // Got to View Posting Activity loaded with info
+                                    editJobPosting = postingInfo;
                                     editEngaged = true;
                                     showCreateHelpPosting();
                                 }
