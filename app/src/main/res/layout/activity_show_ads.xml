@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ShowAdsActivity">
+
+
+    <TextView
+        android:id="@+id/create_AD_Text"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:fontFamily="@font/vertigoflfbold"
+        android:text="Manage Ads"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:textAlignment="center"
+        android:textColor="#FFA617"
+        android:textSize="48sp"
+        android:textStyle="bold"
+     />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerView"/>
+
+
+</LinearLayout>
