@@ -99,4 +99,7 @@ public class JobPosting {
     public void setUserID(String userID) {
         this.userID = userID;
     }
+
+    public String getPostingID() {
+        return postingID;}
 }

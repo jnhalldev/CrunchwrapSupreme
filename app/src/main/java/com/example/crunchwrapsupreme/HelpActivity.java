@@ -1,6 +1,7 @@
 package com.example.crunchwrapsupreme;
 
 import static com.example.crunchwrapsupreme.ProfileActivity.currentUserProfile;
+import static com.example.crunchwrapsupreme.ViewMyHelpPostingsActivity.editEngaged;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -68,6 +69,11 @@ public class HelpActivity extends AppCompatActivity {
         boolean locationFilled = true;
         boolean addressFilled = true;
         boolean compensationFilled = true;
+
+        if (editEngaged) {
+
+            //NameOfCompanyText.setText();
+        }
 
         if (NameOfCompanyText.getText().toString().matches("")) {companyFilled = false;}
         else if (positionText.getText().toString().matches("")) {positionFilled = false;}
