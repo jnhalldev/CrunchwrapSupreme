@@ -113,31 +113,10 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference reference = database.getReference("Profiles").child(currentUser.getUid());
-        reference.addValueEventListener((new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    userName.setText(currentUserProfile.getFirstName() + " " + currentUserProfile.getLastName());
-                    userPhone.setText(currentUserProfile.getPhone());
-                    userEmail.setText(currentUserProfile.getEmail());
-                    userBio.setText(currentUserProfile.getBio());
-                    if (!currentUserProfile.getProfilePicture().toString().matches("")) {
-                        try {
-                            //Picasso.get().load(currentUserProfile.getProfilePicture().toString()).into(userImage);
-                            loadImageWithResize();
-                        }catch (Exception e) {
-
-                        }
-                    }
-                }
-
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        }));
+        userName.setText(currentUserProfile.getFirstName() + " " + currentUserProfile.getLastName());
+        userPhone.setText(currentUserProfile.getPhone());
+        userEmail.setText(currentUserProfile.getEmail());
+        userBio.setText(currentUserProfile.getBio());
     }
 
     private void loadImageWithResize() {
