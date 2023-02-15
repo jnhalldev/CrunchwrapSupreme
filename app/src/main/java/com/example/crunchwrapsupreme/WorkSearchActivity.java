@@ -25,6 +25,8 @@ public class WorkSearchActivity extends AppCompatActivity {
     private LinearLayout layout;
     private EditText searchValue;
 
+    public static JobPosting viewJobPosting;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,7 +97,8 @@ public class WorkSearchActivity extends AppCompatActivity {
                             btnMoreInfo.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    // Got to View Posting Activity loaded with info
+                                    viewJobPosting = postingInfo;
+                                    showViewJobPostingActivity();
                                 }
                             });
                             layout.addView(view);
@@ -136,7 +139,8 @@ public class WorkSearchActivity extends AppCompatActivity {
                         btnMoreInfo.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                // Got to View Posting Activity loaded with info
+                                viewJobPosting = postingInfo;
+                                showViewJobPostingActivity();
                             }
                         });
                         layout.addView(view);
@@ -155,10 +159,11 @@ public class WorkSearchActivity extends AppCompatActivity {
     }
 
 
-    public void classJobPosting(){
-        Intent intent = new Intent(this, HelpActivity.class);
+    public void showViewJobPostingActivity(){
+        Intent intent = new Intent(this, ViewPostingActivity.class);
         startActivity(intent);
         finish();
     }
+
 
 }
