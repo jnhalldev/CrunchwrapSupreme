@@ -68,16 +68,18 @@ public class HelpActivity extends AppCompatActivity {
             AddressText.setText(editJobPosting.getAddressText());
             requirementsText.setText(editJobPosting.getDescription());
             compensationAmount.setText(editJobPosting.getCompensationAmount());
-            if (editJobPosting.getCompensationUnit() == compensationUnit.getItemAtPosition(0)) {compensationUnit.setSelection(0);}
-            else if (editJobPosting.getCompensationUnit() == compensationUnit.getItemAtPosition(1)) {compensationUnit.setSelection(1);}
-            else if (editJobPosting.getCompensationUnit() == compensationUnit.getItemAtPosition(2)) {compensationUnit.setSelection(2);}
-            else if (editJobPosting.getCompensationUnit() == compensationUnit.getItemAtPosition(3)) {compensationUnit.setSelection(3);}
+            if (editJobPosting.getCompensationUnit().toString().matches(compensationUnit.getItemAtPosition(0).toString())) {compensationUnit.setSelection(0);}
+            else if (editJobPosting.getCompensationUnit().toString().matches(compensationUnit.getItemAtPosition(1).toString())) {compensationUnit.setSelection(1);}
+            else if (editJobPosting.getCompensationUnit().toString().matches(compensationUnit.getItemAtPosition(2).toString())) {compensationUnit.setSelection(2);}
+            else if (editJobPosting.getCompensationUnit().toString().matches(compensationUnit.getItemAtPosition(3).toString())) {compensationUnit.setSelection(3);}
         }
 
         Button btnSubmit = findViewById(R.id.Complete);
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                editJobPosting = null;
+                if (editEngaged) {editEngaged = false;}
                 createJobPosting();
             }
         });
@@ -113,6 +115,7 @@ public class HelpActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             Toast.makeText(HelpActivity.this, "Job posting created successfully.", Toast.LENGTH_LONG).show();
+                            editJobPosting = null;
                             if (editEngaged) {editEngaged = false;}
                             showMyHelpPostingsActivity();
                         }
