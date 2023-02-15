@@ -28,7 +28,6 @@
         android:ems="10"
         android:fontFamily="@font/vertigoflfbold"
         android:hint="Description"
-        android:inputType="textPersonName"
         android:textSize="24dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/Complete"
