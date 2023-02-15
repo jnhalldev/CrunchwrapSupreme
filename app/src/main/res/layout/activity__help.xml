@@ -29,10 +29,11 @@
         android:fontFamily="@font/vertigoflfbold"
         android:hint="Description"
         android:textSize="24dp"
+        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890(){}[]/\!.?,:;-'\n "
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/Complete"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
