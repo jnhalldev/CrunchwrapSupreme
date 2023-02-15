@@ -22,6 +22,7 @@ public class UserProfile {
     UserProfile() {
     }
     UserProfile(String fN, String lN, String e, String pN, String p) {
+        resume = new Resume();
         firstName = fN;
         lastName = lN;
         emailAddress = e;
@@ -30,7 +31,8 @@ public class UserProfile {
         profilePicture = "";
         bio = "";
         helpWantedPostingKeys = new ArrayList<JobPosting>();
-        resume = new Resume();
+        inbox = new ArrayList<Message>();
+        sentBox = new ArrayList<Message>();
     }
 
     public void setFirstName(String s) {
@@ -90,32 +92,26 @@ public class UserProfile {
     }
 
     public void addToResume(WorkExperience workExperience) {
-        if (resume == null) { resume = new Resume();}
         this.resume.addWorkExperience(workExperience);
     }
 
     public WorkExperience getWorkExperienceFromIndex(int index) {
-        if (resume == null) { resume = new Resume();}
         return this.resume.getWorkExperienceAtIndex(index);
     }
 
     public void removeWorkExperience(WorkExperience workExperience) {
-        if (resume == null) { resume = new Resume();}
         this.resume.removeWorkExperience(workExperience);
     }
 
     public void addToEducation(Education education) {
-        if (resume == null) { resume = new Resume();}
         this.resume.addEducation(education);
     }
 
     public Education getEducationFromIndex(int index) {
-        if (resume == null) { resume = new Resume();}
         return this.resume.getEducationAtIndex(index);
     }
 
     public void removeEducation(Education education) {
-        if (resume == null) { resume = new Resume();}
         this.resume.removeEducation(education);
     }
 
@@ -144,12 +140,10 @@ public class UserProfile {
     }
 
     public void addHelpPostingToList(JobPosting jobPosting) {
-        if (helpWantedPostingKeys == null) { helpWantedPostingKeys = new ArrayList<JobPosting>();}
         helpWantedPostingKeys.add(jobPosting);
     }
 
     public boolean removeHelpPostingFromList(JobPosting jobPosting) {
-        if (helpWantedPostingKeys == null) { helpWantedPostingKeys = new ArrayList<JobPosting>();}
         return helpWantedPostingKeys.remove(jobPosting);
     }
 
@@ -162,7 +156,6 @@ public class UserProfile {
     }
 
     public void addMessageToInbox(Message message) {
-        if (this.inbox == null) this.inbox = new ArrayList<Message>();
         this.inbox.add(message);
     }
 
@@ -171,8 +164,7 @@ public class UserProfile {
     }
 
     public void removeMessageFromInboxAtIndex(int index) {
-        if (this.inbox == null) this.inbox = new ArrayList<Message>();
-        else if (index < this.inbox.size() - 1) {
+        if (index < this.inbox.size() - 1) {
             this.inbox.remove(index);
         }
     }
@@ -186,17 +178,14 @@ public class UserProfile {
     }
 
     public void addMessageToSent(Message message) {
-        if(this.sentBox == null) {this.sentBox = new ArrayList<Message>();}
         this.sentBox.add(message);
     }
 
     public boolean removeMessageFromSent(Message message) {
-        if(this.sentBox == null) {this.sentBox = new ArrayList<Message>();}
         return this.sentBox.remove(message);
     }
 
     public void removeMessageFromSentAtIndex(int index) {
-        if(this.sentBox == null) {this.sentBox = new ArrayList<Message>();}
         if (index < this.sentBox.size() - 1) {
             this.sentBox.remove(index);
         }

@@ -50,7 +50,7 @@
                     android:textSize="20sp"/>
 
                 <TextView
-                    android:id="@+id/textViewMessageFrom"
+                    android:id="@+id/textViewMessageReceivedDateFromUser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@+id/textViewMessageSubject"
@@ -60,7 +60,7 @@
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/textViewMessageFromUser"
+                    android:id="@+id/textViewMessageFrom"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textViewMessageReceivedDate"
@@ -68,6 +68,17 @@
                     android:fontFamily="@font/vertigoflfbold"
                     android:textStyle="bold"
                     android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/textViewMessageFromUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/textViewMessageFrom"
+                    android:layout_below="@+id/textViewMessageReceivedDate"
+                    android:fontFamily="@font/vertigoflfbold"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
 
                 <Button
                     android:id="@+id/buttonMessageRead"
