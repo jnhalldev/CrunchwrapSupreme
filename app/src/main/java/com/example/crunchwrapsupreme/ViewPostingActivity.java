@@ -29,7 +29,7 @@ public class ViewPostingActivity extends AppCompatActivity {
         textViewCompanyName.setText(viewJobPosting.getNameOfCompanyText());
         textViewCompanyAddress.setText(viewJobPosting.getAddressText());
         textViewCompanyLocation.setText(viewJobPosting.getLocationText());
-        textViewCompensation.setText(viewJobPosting.getCompensationAmount() + " / " + viewJobPosting.getCompensationUnit());
+        textViewCompensation.setText("$"+viewJobPosting.getCompensationAmount() + " / " + viewJobPosting.getCompensationUnit());
         textViewCompanyShift.setText(viewJobPosting.getShiftText());
         textViewCompanyDescription.setText(viewJobPosting.getDescription());
 
