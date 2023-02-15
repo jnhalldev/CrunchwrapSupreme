@@ -162,6 +162,7 @@ public class UserProfile {
     }
 
     public void addMessageToInbox(Message message) {
+        if (this.inbox == null) this.inbox = new ArrayList<Message>();
         this.inbox.add(message);
     }
 
@@ -170,7 +171,8 @@ public class UserProfile {
     }
 
     public void removeMessageFromInboxAtIndex(int index) {
-        if (index < this.inbox.size() - 1) {
+        if (this.inbox == null) this.inbox = new ArrayList<Message>();
+        else if (index < this.inbox.size() - 1) {
             this.inbox.remove(index);
         }
     }
@@ -184,14 +186,17 @@ public class UserProfile {
     }
 
     public void addMessageToSent(Message message) {
+        if(this.sentBox == null) {this.sentBox = new ArrayList<Message>();}
         this.sentBox.add(message);
     }
 
     public boolean removeMessageFromSent(Message message) {
+        if(this.sentBox == null) {this.sentBox = new ArrayList<Message>();}
         return this.sentBox.remove(message);
     }
 
     public void removeMessageFromSentAtIndex(int index) {
+        if(this.sentBox == null) {this.sentBox = new ArrayList<Message>();}
         if (index < this.sentBox.size() - 1) {
             this.sentBox.remove(index);
         }
