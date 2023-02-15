@@ -6,6 +6,10 @@
         <item>Year</item>
         <item>Project</item>
     </string-array>
+    <string-array name="MessageBoxes">
+        <item>Inbox</item>
+        <item>Sent</item>
+    </string-array>
     <string name="back"><![CDATA[<]]></string>
     <string name="job_search">Job Search</string>
     <string name="backhomepage"><![CDATA[<]]></string>

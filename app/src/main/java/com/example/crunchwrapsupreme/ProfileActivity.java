@@ -1,5 +1,7 @@
 package com.example.crunchwrapsupreme;
 
+import static com.example.crunchwrapsupreme.MainActivity.currentUserProfile;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -53,8 +55,6 @@ public class ProfileActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
     private StorageReference storageRef;
-
-    public static UserProfile currentUserProfile;
 
 
     @Override
@@ -118,7 +118,6 @@ public class ProfileActivity extends AppCompatActivity {
         reference.addValueEventListener((new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                currentUserProfile = snapshot.getValue(UserProfile.class);
                     userName.setText(currentUserProfile.getFirstName() + " " + currentUserProfile.getLastName());
                     userPhone.setText(currentUserProfile.getPhone());
                     userEmail.setText(currentUserProfile.getEmail());
