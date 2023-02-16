@@ -155,6 +155,10 @@ public class UserProfile {
         return inbox;
     }
 
+    public void clearMessagesReceived() {
+        inbox.clear();
+    }
+
     public void addMessageToInbox(Message message) {
         this.inbox.add(message);
     }
@@ -183,6 +187,10 @@ public class UserProfile {
 
     public boolean removeMessageFromSent(Message message) {
         return this.sentBox.remove(message);
+    }
+
+    public void clearMessagesSent() {
+        sentBox.clear();
     }
 
     public void removeMessageFromSentAtIndex(int index) {

@@ -61,7 +61,7 @@ public class ViewPostingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Profiles").child(viewJobPosting.getUserID());
 
-                databaseReference.addValueEventListener((new ValueEventListener() {
+                databaseReference.addListenerForSingleValueEvent((new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         UserProfile tempProfile = snapshot.getValue(UserProfile.class);
@@ -92,6 +92,7 @@ public class ViewPostingActivity extends AppCompatActivity {
                                 .child(currentUser.getUid()).setValue(currentUserProfile);
 
                         Toast.makeText(ViewPostingActivity.this, "Your resume has been sent!", Toast.LENGTH_SHORT).show();
+                        showWorkSearchActivity();
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {

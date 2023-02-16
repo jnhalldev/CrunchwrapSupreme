@@ -66,5 +66,14 @@
             android:orientation="vertical" />
     </ScrollView>
 
+    <ImageButton
+        android:id="@+id/imageButtonDeleteAllInBox"
+        android:layout_width="53dp"
+        android:layout_height="46dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView7"
+        app:layout_constraintStart_toEndOf="@+id/homeButton6"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,18 +2,19 @@ package com.example.crunchwrapsupreme;
 
 import static com.example.crunchwrapsupreme.MainActivity.currentUserProfile;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -32,13 +33,69 @@ public class Messages_Page extends AppCompatActivity {
     private List<Message> sentMessages;
     private Spinner spinnerBox;
 
+    AlertDialog dialog;
+    AlertDialog.Builder builder;
+    String[] deleteBoxOptions = {"Inbox", "Sent"};
+
     public static Message viewMessage;
-    //pri
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messages_page);
+
+        builder = new AlertDialog.Builder(Messages_Page.this);
+
+        builder.setTitle("Delete all in: ");
+
+        builder.setSingleChoiceItems(deleteBoxOptions, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        builder.setPositiveButton("Delete All", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (spinnerBox.getSelectedItem().toString().matches("Inbox")) {
+                    if (currentUserProfile.getMessagesReceived() != null) {
+                        currentUserProfile.clearMessagesReceived();
+                        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                        FirebaseDatabase.getInstance().getReference("Profiles")
+                                .child(currentUser.getUid()).setValue(currentUserProfile);
+                    }
+                }
+                else {
+                    if (currentUserProfile.getSentBox() != null) {
+                        currentUserProfile.clearMessagesSent();
+                        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                        FirebaseDatabase.getInstance().getReference("Profiles")
+                                .child(currentUser.getUid()).setValue(currentUserProfile);
+                    }
+                }
+                generateCards();
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        dialog = builder.create();
+
+        ImageButton btnDeleteAllInBox = findViewById(R.id.imageButtonDeleteAllInBox);
+
+        btnDeleteAllInBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.show();
+            }
+        });
 
         layout = findViewById(R.id.containerMessages);
 
@@ -92,6 +149,7 @@ public class Messages_Page extends AppCompatActivity {
                     TextView messageDateUser = view.findViewById(R.id.textViewMessageReceivedDateFromUser);
 
                     Button buttonReadMessage = view.findViewById(R.id.buttonMessageRead);
+                    if (message.isRead()) {buttonReadMessage.setText("Read");}
 
                     messageSubject.setText(message.getMessageSubject());
                     messageFromUser.setText(message.getSentUserName());
@@ -100,7 +158,10 @@ public class Messages_Page extends AppCompatActivity {
                     buttonReadMessage.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            // if button is clicked open activity to view full message and reply
+                            message.setRead(true);
+                            viewMessage = message;
+                            Intent intent = new Intent(Messages_Page.this, ViewMessageActivity.class);
+                            startActivity(intent);
                         }
                     });
 
@@ -126,6 +187,7 @@ public class Messages_Page extends AppCompatActivity {
                     TextView messageDateUser = view.findViewById(R.id.textViewMessageReceivedDateFromUser);
 
                     Button buttonReadMessage = view.findViewById(R.id.buttonMessageRead);
+                    buttonReadMessage.setText("View");
 
                     TextView messageTo = view.findViewById(R.id.textViewMessageFromUser);
                     messageTo.setText("To: ");
@@ -137,7 +199,9 @@ public class Messages_Page extends AppCompatActivity {
                     buttonReadMessage.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            // if button is clicked open activity to view full message and reply
+                            viewMessage = message;
+                            Intent intent = new Intent(Messages_Page.this, ViewMessageActivity.class);
+                            startActivity(intent);
                         }
                     });
 
