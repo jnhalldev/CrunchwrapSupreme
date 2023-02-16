@@ -112,7 +112,7 @@ public class ProfileActivity extends AppCompatActivity {
         userPhone.setText(currentUserProfile.getPhone());
         userEmail.setText(currentUserProfile.getEmail());
         userBio.setText(currentUserProfile.getBio());
-        loadImageWithResize();
+        if (!currentUserProfile.getProfilePicture().matches("")) {loadImageWithResize();}
     }
 
     private void loadImageWithResize() {

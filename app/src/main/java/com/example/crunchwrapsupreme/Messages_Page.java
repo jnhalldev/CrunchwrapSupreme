@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -57,6 +58,19 @@ public class Messages_Page extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        spinnerBox.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                generateCards();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
     }
 
     public void generateCards() {
@@ -68,6 +82,8 @@ public class Messages_Page extends AppCompatActivity {
                 FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
                 FirebaseDatabase.getInstance().getReference("Profiles")
                         .child(currentUser.getUid()).setValue(currentUserProfile);
+            }
+            else {
                 for (Message message : inboxMessages) {
                     View view = getLayoutInflater().inflate(R.layout.message_card, null);
 
@@ -87,6 +103,45 @@ public class Messages_Page extends AppCompatActivity {
                             // if button is clicked open activity to view full message and reply
                         }
                     });
+
+                    layout.addView(view);
+                }
+            }
+
+        }
+        else if (spinnerBox.getSelectedItem().toString().matches("Sent")) {
+            if (sentMessages == null) {
+                sentMessages = new ArrayList<Message>();
+                currentUserProfile.setMessagesReceived(sentMessages);
+                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                FirebaseDatabase.getInstance().getReference("Profiles")
+                        .child(currentUser.getUid()).setValue(currentUserProfile);
+            }
+            else {
+                for (Message message : sentMessages) {
+                    View view = getLayoutInflater().inflate(R.layout.message_card, null);
+
+                    TextView messageSubject = view.findViewById(R.id.textViewMessageSubjectFromUser);
+                    TextView messageFromUser = view.findViewById(R.id.textViewMessageFromUser);
+                    TextView messageDateUser = view.findViewById(R.id.textViewMessageReceivedDateFromUser);
+
+                    Button buttonReadMessage = view.findViewById(R.id.buttonMessageRead);
+
+                    TextView messageTo = view.findViewById(R.id.textViewMessageFromUser);
+                    messageTo.setText("To: ");
+
+                    messageSubject.setText(message.getMessageSubject());
+                    messageFromUser.setText(message.getSentUserName());
+                    messageDateUser.setText(message.getReceivedDateTime());
+
+                    buttonReadMessage.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // if button is clicked open activity to view full message and reply
+                        }
+                    });
+
+                    layout.addView(view);
                 }
             }
 

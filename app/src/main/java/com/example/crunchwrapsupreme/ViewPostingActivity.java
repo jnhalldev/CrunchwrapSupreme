@@ -14,11 +14,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class ViewPostingActivity extends AppCompatActivity {
 
@@ -65,11 +68,28 @@ public class ViewPostingActivity extends AppCompatActivity {
                         String firstName = currentUserProfile.getFirstName();
                         String lastName = currentUserProfile.getLastName();
 
-                        tempProfile.addMessageToInbox(new Message(viewJobPosting.userID,
+                        Message tempMessage = new Message(viewJobPosting.userID,
                                 firstName + " " + lastName,
                                 FirebaseAuth.getInstance().getCurrentUser().getUid().toString(),
                                 firstName + " " + lastName + " applied to your posting!",
-                                firstName + " " + lastName + " has sent you their resume to check out for this job posting."));
+                                firstName + " " + lastName + " has sent you their resume to check out for this job posting.");
+
+                        if (tempProfile.getMessagesReceived() == null) {
+                            tempProfile.setMessagesReceived(new ArrayList<Message>());
+                        }
+                        tempProfile.addMessageToInbox(tempMessage);
+
+                        if (currentUserProfile.getSentBox() == null) {
+                            currentUserProfile.setSentBox(new ArrayList<Message>());
+                        }
+                        currentUserProfile.addMessageToSent(tempMessage);
+                        FirebaseDatabase.getInstance().getReference("Profiles")
+                                .child(viewJobPosting.getUserID()).setValue(tempProfile);
+
+
+                        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                        FirebaseDatabase.getInstance().getReference("Profiles")
+                                .child(currentUser.getUid()).setValue(currentUserProfile);
 
                         Toast.makeText(ViewPostingActivity.this, "Your resume has been sent!", Toast.LENGTH_SHORT).show();
                     }
