@@ -1,6 +1,6 @@
 package com.example.crunchwrapsupreme;
 
-import static com.example.crunchwrapsupreme.ProfileActivity.currentUserProfile;
+import static com.example.crunchwrapsupreme.MainActivity.currentUserProfile;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
@@ -46,6 +46,10 @@ public class ResumeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resume);
 
+        if (currentUserProfile.getResume() == null) {
+            currentUserProfile.setResume(new Resume());
+        }
+
         layout = findViewById(R.id.containerWorkHistory);
         generateCards();
 
@@ -66,9 +70,7 @@ public class ResumeActivity extends AppCompatActivity {
 
         btnAddToEducation.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                dialogEducation.show();
-            }
+            public void onClick(View v) {dialogEducation.show();}
         });
 
         btnAddToSkills.setOnClickListener(new View.OnClickListener() {
@@ -302,6 +304,8 @@ public class ResumeActivity extends AppCompatActivity {
             layout.addView(view);
         }
 
+
+
         LinearLayout.LayoutParams layoutParamsEducation = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
@@ -364,8 +368,6 @@ public class ResumeActivity extends AppCompatActivity {
             layout.addView(view);
         }
 
-
-
         TextView textViewSkills = new TextView(this);
         textViewSkills.setText("Skills:");
         textViewSkills.setTextSize(25);
@@ -388,7 +390,6 @@ public class ResumeActivity extends AppCompatActivity {
         btnAddToSkills.setLayoutParams(layoutParamsSkill);
         layout.addView(btnAddToSkills);
 
-        // add in skill cards
         List<Skill> currentSkillList = currentUserProfile.getResume().getSkillList();
         for (Skill skill : currentSkillList) {
             View view = getLayoutInflater().inflate(R.layout.skillcards, null);
@@ -419,7 +420,6 @@ public class ResumeActivity extends AppCompatActivity {
             }
             layout.addView(view);
         }
-
 
         TextView textViewReferences = new TextView(this);
         textViewReferences.setText("References:");
@@ -477,6 +477,7 @@ public class ResumeActivity extends AppCompatActivity {
             }
             layout.addView(view);
         }
+
     }
 
     private boolean checkIfUsersProfile() {

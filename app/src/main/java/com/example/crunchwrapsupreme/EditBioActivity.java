@@ -1,6 +1,6 @@
 package com.example.crunchwrapsupreme;
 
-import static com.example.crunchwrapsupreme.ProfileActivity.currentUserProfile;
+import static com.example.crunchwrapsupreme.MainActivity.currentUserProfile;
 
 import androidx.appcompat.app.AppCompatActivity;
 

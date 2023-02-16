@@ -1,5 +1,7 @@
 package com.example.crunchwrapsupreme;
 
+import static com.example.crunchwrapsupreme.MainActivity.currentUserProfile;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +15,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -49,12 +52,7 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView userBio;
 
     private Uri imagePath;
-
-    private FirebaseAuth mAuth;
-    private FirebaseUser currentUser;
     private StorageReference storageRef;
-
-    public static UserProfile currentUserProfile;
 
 
     @Override
@@ -62,7 +60,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        userImage = (ImageButton)findViewById(R.id.imageButtonUserPicture);
+        userImage = findViewById(R.id.imageButtonUserPicture);
         userName = findViewById(R.id.textViewProfileUserName);
         userEmail = findViewById(R.id.textViewProfileUserEmail);
         userPhone = findViewById(R.id.textViewProfileUserPhone);
@@ -75,9 +73,6 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivityForResult(photoIntent,1);
             }
         });
-
-        mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
 
         Button btnBack = findViewById(R.id.buttonProfileBack);
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -113,40 +108,31 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference reference = database.getReference("Profiles").child(currentUser.getUid());
-        reference.addValueEventListener((new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                currentUserProfile = snapshot.getValue(UserProfile.class);
-                    userName.setText(currentUserProfile.getFirstName() + " " + currentUserProfile.getLastName());
-                    userPhone.setText(currentUserProfile.getPhone());
-                    userEmail.setText(currentUserProfile.getEmail());
-                    userBio.setText(currentUserProfile.getBio());
-                    if (!currentUserProfile.getProfilePicture().toString().matches("")) {
-                        try {
-                            //Picasso.get().load(currentUserProfile.getProfilePicture().toString()).into(userImage);
-                            loadImageWithResize();
-                        }catch (Exception e) {
-
-                        }
-                    }
-                }
-
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        }));
+        userName.setText(currentUserProfile.getFirstName() + " " + currentUserProfile.getLastName());
+        userPhone.setText(currentUserProfile.getPhone());
+        userEmail.setText(currentUserProfile.getEmail());
+        userBio.setText(currentUserProfile.getBio());
+        if (!currentUserProfile.getProfilePicture().matches("")) {loadImageWithResize();}
     }
 
     private void loadImageWithResize() {
-        Picasso
-                .get()
-                .load(currentUserProfile.getProfilePicture().toString())
-                .resize(userImage.getWidth(), userImage.getHeight()) // resizes the image to these dimensions (in pixel). does not respect aspect ratio
-                .into(userImage);
+
+        userImage.getViewTreeObserver()
+                .addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                    // Wait until layout to call Picasso
+                    @Override
+                    public void onGlobalLayout() {
+                        // Ensure we call this only once
+                        userImage.getViewTreeObserver()
+                                .removeOnGlobalLayoutListener(this);
+
+                        Picasso
+                                .get()
+                                .load(currentUserProfile.getProfilePicture().toString())
+                                .resize(userImage.getWidth(), userImage.getHeight()) // resizes the image to these dimensions (in pixel). does not respect aspect ratio
+                                .into(userImage);
+                    }
+                });
     }
 
     private void showMainActivity() {
@@ -197,7 +183,7 @@ public class ProfileActivity extends AppCompatActivity {
         ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Uploading...");
         progressDialog.show();
-        String fileName = currentUser.getUid().toString();
+        String fileName = FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
 
         storageRef = FirebaseStorage.getInstance().getReference("profileImages/"+fileName);
 
@@ -233,7 +219,7 @@ public class ProfileActivity extends AppCompatActivity {
     private void updateProfilePicture(String url) {
         currentUserProfile.setProfilePicture(url);
         FirebaseDatabase.getInstance().getReference("Profiles")
-                .child(currentUser.getUid()).setValue(currentUserProfile);
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(currentUserProfile);
     }
 
 

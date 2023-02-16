@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 
 public class Message {
     private String sentUserID;
+    private String sentUserName;
     private String receivedUserID;
     private String messageSubject;
     private String messageBody;
@@ -12,8 +13,9 @@ public class Message {
     private boolean isReplied;
 
     public Message() {}
-    public Message(String sentUserID, String receivedUserID, String messageSubject, String messageBody) {
+    public Message(String sentUserID, String sentUserName, String receivedUserID, String messageSubject, String messageBody) {
         this.sentUserID = sentUserID;
+        this.sentUserName = sentUserName;
         this.receivedUserID = receivedUserID;
         this.messageSubject = messageSubject;
         this.messageBody = messageBody;
@@ -26,6 +28,14 @@ public class Message {
 
     public void setSentUserID(String sentUserID) {
         this.sentUserID = sentUserID;
+    }
+
+    public String getSentUserName() {
+        return sentUserName;
+    }
+
+    public void setSentUserName(String sentUserName) {
+        this.sentUserName = sentUserName;
     }
 
     public String getReceivedUserID() {

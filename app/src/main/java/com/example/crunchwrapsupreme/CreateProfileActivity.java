@@ -3,6 +3,8 @@ package com.example.crunchwrapsupreme;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import static com.example.crunchwrapsupreme.MainActivity.currentUserProfile;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -169,10 +171,10 @@ public class CreateProfileActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                UserProfile user = new UserProfile(firstNameString, lastNameString, emailString, phoneString, passwordString);
+                                currentUserProfile = new UserProfile(firstNameString, lastNameString, emailString, phoneString, passwordString);
                                 FirebaseDatabase.getInstance().getReference("Profiles")
                                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                        .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        .setValue(currentUserProfile).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 showMainActivity();

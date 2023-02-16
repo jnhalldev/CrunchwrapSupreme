@@ -1,5 +1,6 @@
 package com.example.crunchwrapsupreme;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,7 +15,11 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
@@ -31,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     Button mapButton;
     Button contactButton;
     Button settingsButton;
+
+    public static UserProfile currentUserProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +56,18 @@ public class MainActivity extends AppCompatActivity {
             openCreateAccountActivity();
             return;
         }
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reference = database.getReference("Profiles").child(currentUser.getUid());
+        reference.addValueEventListener((new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                currentUserProfile = snapshot.getValue(UserProfile.class);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        }));
 
         helpButton = findViewById(R.id.helpButton);
         workButton = findViewById(R.id.workButton);
