@@ -158,8 +158,10 @@ public class Messages_Page extends AppCompatActivity {
                     buttonReadMessage.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            message.setRead(true);
                             viewMessage = message;
+                            viewMessage.setRead(true);
+                            currentUserProfile.removeMessageFromInbox(message);
+                            currentUserProfile.addMessageToInbox(viewMessage);
                             Intent intent = new Intent(Messages_Page.this, ViewMessageActivity.class);
                             startActivity(intent);
                         }
@@ -200,6 +202,9 @@ public class Messages_Page extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             viewMessage = message;
+                            viewMessage.setRead(true);
+                            currentUserProfile.removeMessageFromSent(message);
+                            currentUserProfile.addMessageToSent(viewMessage);
                             Intent intent = new Intent(Messages_Page.this, ViewMessageActivity.class);
                             startActivity(intent);
                         }
@@ -207,6 +212,10 @@ public class Messages_Page extends AppCompatActivity {
 
                     layout.addView(view);
                 }
+
+                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                FirebaseDatabase.getInstance().getReference("Profiles")
+                        .child(currentUser.getUid()).setValue(currentUserProfile);
             }
 
         }
