@@ -22,11 +22,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonVisitOtherProfileLogout"
+        android:id="@+id/buttonVisitOtherProfileMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="Logout"
+        android:text="Message"
         android:fontFamily="@font/vertigoflfbold"
         android:textStyle="bold"
         android:textSize="18dp"
@@ -83,21 +83,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewVisitOtherProfileUserEmail" />
-
-    <Button
-        android:id="@+id/buttonVisitOtherProfileEditBio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Edit Bio"
-        android:fontFamily="@font/vertigoflfbold"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        android:backgroundTint="#FFA617"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewVisitOtherProfileUserPhone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageButtonVisitOtherUserPicture"
-        app:layout_constraintTop_toBottomOf="@+id/buttonVisitOtherProfileLogout" />
 
     <Button
         android:id="@+id/buttonVisitOtherProfileViewResume"
