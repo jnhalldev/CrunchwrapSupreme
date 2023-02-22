@@ -63,7 +63,7 @@ public class ViewMessageActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewMessage = null;
+                //viewMessage = null;
                 showMessagesPageActivity();
             }
         });
@@ -83,7 +83,7 @@ public class ViewMessageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (currentUserProfile.removeMessageFromInbox(viewMessage));
                 else { currentUserProfile.removeMessageFromSent(viewMessage);}
-                viewMessage = null;
+                //viewMessage = null;
                 showMessagesPageActivity();
             }
         });

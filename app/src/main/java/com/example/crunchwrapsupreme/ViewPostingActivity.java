@@ -71,6 +71,7 @@ public class ViewPostingActivity extends AppCompatActivity {
                         Message tempMessage = new Message(viewJobPosting.userID,
                                 firstName + " " + lastName,
                                 FirebaseAuth.getInstance().getCurrentUser().getUid().toString(),
+                                viewJobPosting.getNameOfCompanyText(),
                                 firstName + " " + lastName + " applied to your posting!",
                                 firstName + " " + lastName + " has sent you their resume to check out for this job posting.");
 

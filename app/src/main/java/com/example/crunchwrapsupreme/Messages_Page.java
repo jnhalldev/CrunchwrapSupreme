@@ -185,17 +185,17 @@ public class Messages_Page extends AppCompatActivity {
                     View view = getLayoutInflater().inflate(R.layout.message_card, null);
 
                     TextView messageSubject = view.findViewById(R.id.textViewMessageSubjectFromUser);
-                    TextView messageFromUser = view.findViewById(R.id.textViewMessageFromUser);
+                    TextView messageTo = view.findViewById(R.id.textViewMessageFrom);
+                    messageTo.setText("To: ");
                     TextView messageDateUser = view.findViewById(R.id.textViewMessageReceivedDateFromUser);
 
                     Button buttonReadMessage = view.findViewById(R.id.buttonMessageRead);
                     buttonReadMessage.setText("View");
 
-                    TextView messageTo = view.findViewById(R.id.textViewMessageFromUser);
-                    messageTo.setText("To: ");
+                    TextView messageFromUser = view.findViewById(R.id.textViewMessageFromUser);
 
                     messageSubject.setText(message.getMessageSubject());
-                    messageFromUser.setText(message.getSentUserName());
+                    messageFromUser.setText(message.getReceivedUserName());
                     messageDateUser.setText(message.getReceivedDateTime());
 
                     buttonReadMessage.setOnClickListener(new View.OnClickListener() {
