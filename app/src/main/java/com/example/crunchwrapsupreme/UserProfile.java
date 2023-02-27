@@ -152,6 +152,7 @@ public class UserProfile {
     }
 
     public List<Message> getMessagesReceived() {
+        if (inbox == null) {inbox = new ArrayList<Message>();}
         return inbox;
     }
 
@@ -178,6 +179,7 @@ public class UserProfile {
     }
 
     public List<Message> getSentBox() {
+        if (sentBox == null) {sentBox = new ArrayList<Message>();}
         return sentBox;
     }
 

@@ -1,6 +1,7 @@
 package com.example.crunchwrapsupreme;
 
 import static com.example.crunchwrapsupreme.MainActivity.currentUserProfile;
+import static com.example.crunchwrapsupreme.Messages_Page.isSent;
 import static com.example.crunchwrapsupreme.Messages_Page.viewMessage;
 
 import androidx.annotation.NonNull;
@@ -51,7 +52,12 @@ public class ViewMessageActivity extends AppCompatActivity {
         TextView messageBody = findViewById(R.id.textViewMessageBodyFromUser);
 
         messageSubject.setText(viewMessage.getMessageSubject());
-        messageFrom.setText(viewMessage.getSentUserName());
+        if (isSent) {
+            messageFrom.setText(viewMessage.getReceivedUserName());
+            TextView messageTo = findViewById(R.id.textViewMessageViewActivityFrom);
+            messageTo.setText("To: ");
+        }
+        else {messageFrom.setText(viewMessage.getSentUserName());}
         messageFrom.setTextColor(Color.rgb(0,0,200));
         messageDate.setText(viewMessage.getReceivedDateTime());
         messageBody.setText(viewMessage.getMessageBody());
@@ -71,7 +77,8 @@ public class ViewMessageActivity extends AppCompatActivity {
         messageFrom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                visitID = viewMessage.getSentUserID();
+                if (isSent) {visitID = viewMessage.getSentUserID();}
+                else {visitID = viewMessage.getReceivedUserID();}
                 Intent intent = new Intent(ViewMessageActivity.this, VisitOtherProfileActivity.class);
                 startActivity(intent);
 

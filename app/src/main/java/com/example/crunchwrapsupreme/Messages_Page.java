@@ -38,6 +38,7 @@ public class Messages_Page extends AppCompatActivity {
     String[] deleteBoxOptions = {"Inbox", "Sent"};
 
     public static Message viewMessage;
+    public static Boolean isSent = false;
 
 
     @Override
@@ -160,6 +161,7 @@ public class Messages_Page extends AppCompatActivity {
                         public void onClick(View v) {
                             viewMessage = message;
                             viewMessage.setRead(true);
+                            isSent = false;
                             currentUserProfile.removeMessageFromInbox(message);
                             currentUserProfile.addMessageToInbox(viewMessage);
                             Intent intent = new Intent(Messages_Page.this, ViewMessageActivity.class);
@@ -203,6 +205,7 @@ public class Messages_Page extends AppCompatActivity {
                         public void onClick(View v) {
                             viewMessage = message;
                             viewMessage.setRead(true);
+                            isSent = true;
                             currentUserProfile.removeMessageFromSent(message);
                             currentUserProfile.addMessageToSent(viewMessage);
                             Intent intent = new Intent(Messages_Page.this, ViewMessageActivity.class);
