@@ -29,7 +29,7 @@ public class Messages_Page extends AppCompatActivity {
     Button homeButton6;
     private LinearLayout layout;
     private DatabaseReference databaseReference;
-    private List<Message> inboxMessages;
+    public static List<Message> inboxMessages;
     private List<Message> sentMessages;
     private Spinner spinnerBox;
 

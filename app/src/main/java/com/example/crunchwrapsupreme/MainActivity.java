@@ -1,10 +1,17 @@
 package com.example.crunchwrapsupreme;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.LocusId;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.provider.FontsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Modifier;
 import java.util.regex.*;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     Button settingsButton;
 
     public static UserProfile currentUserProfile;
+    private LocusId Notification;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,6 +172,16 @@ public class MainActivity extends AppCompatActivity {
         }
         return signedIn;
     }
+    public void Notification() {
+        Intent intent = new Intent(this, Notification.class);
+        startActivity(intent);
+        finish();
+    }
+
+
+
 }
+
+
 
 
